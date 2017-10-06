@@ -1,0 +1,19 @@
+{{#> layouts/base title="Index" }}
+
+    {{#* inline "nav"}}
+        {{> components/nav}}
+    {{/inline}}
+
+    {{#*inline "content-block"}}
+        {{> components/Hello/Hello greet=data.greet to="World"}}
+    {{/inline}}
+
+    {{#* inline "footer-block"}}
+
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+        <script>console.log("custom script")</script>
+    {{/inline}}
+
+{{/layouts/base}}

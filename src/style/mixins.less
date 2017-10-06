@@ -1,0 +1,43 @@
+.font(@font-family, @font-size, @line-height, @font-weight) {
+  font-family: @font-family;
+  font-size: @font-size;
+  line-height: @line-height;
+  font-weight: @font-weight;
+}
+
+.pseudo() {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.shadow-top() {
+    .pseudo();
+    width: 100%;
+    height: 46px;
+    top: 0;
+    left: 0;
+
+    background: url("../img/shadow.png") no-repeat top center;
+}
+
+
+.shadow-after() {
+  .pseudo();
+  width: 100%;
+  height: 46px;
+  bottom: -46px;
+  left: 0;
+
+  background: url("../img/shadow.png") no-repeat top center;
+}
+
+.shadow-before() {
+  .pseudo();
+  width: 100%;
+  height: 46px;
+  top: -46px;
+  left: 0;
+
+  background: url("../img/shadow.png") no-repeat top center;
+}
