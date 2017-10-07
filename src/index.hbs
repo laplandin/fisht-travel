@@ -1,19 +1,23 @@
 {{#> layouts/base title="Index" }}
 
-    {{#* inline "nav"}}
-        {{> components/nav}}
-    {{/inline}}
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
 
-    {{#*inline "content-block"}}
-        {{> components/Hello/Hello greet=data.greet to="World"}}
-    {{/inline}}
+  {{#*inline "content-block"}}
+  {{> components/main-nav/main-nav}}
+  <header class="header">
+    {{> components/slider/slider}}
 
-    {{#* inline "footer-block"}}
+  </header>
+  {{/inline}}
 
-    {{/inline}}
+  {{#* inline "footer-block"}}
 
-    {{#* inline "scripts-block"}}
-        <script>console.log("custom script")</script>
-    {{/inline}}
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
 
 {{/layouts/base}}

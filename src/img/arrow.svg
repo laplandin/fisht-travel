@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="59" height="220" viewBox="0 0 59 220">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #626262;
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-width: 1px;
+        filter: url(#filter-chain-1);
+        fill-rule: evenodd;
+      }
+    </style>
+
+    <filter id="filter-chain-1" filterUnits="userSpaceOnUse">
+      <feOffset in="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="dropBlur"/>
+      <feFlood flood-opacity="0.25"/>
+      <feComposite operator="in" in2="dropBlur" result="dropShadowComp"/>
+      <feComposite in="SourceGraphic" result="shadowed"/>
+      <feFlood flood-color="#fff"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend in2="shadowed" result="solidFill"/>
+    </filter>
+  </defs>
+  <g style="fill: #626262; filter: url(#filter-chain-1)">
+    <path d="M55.503,109.999 L54.826,108.596 L4.173,3.506 L3.497,4.913 L54.150,110.002 L3.497,215.091 L4.173,216.493 L54.826,111.405 L54.826,111.408 L55.503,109.999 Z" id="path-1" style="stroke: inherit; filter: none; fill: inherit" class="cls-1"/>
+  </g>
+  <use xlink:href="#path-1" style="stroke: #fff; filter: none; fill: none"/>
+</svg>
