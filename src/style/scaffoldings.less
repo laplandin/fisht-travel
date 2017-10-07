@@ -1,12 +1,26 @@
-.container {
-  width: 1200px !important;
-}
-
 html {
+  box-sizing: border-box;
+
   font-size: 10px;
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
 }
 
 body {
-  overflow-x: hidden;
   position: relative;
+
+  margin: 0;
+
+  font-family: @fira-sans;
+
+  background-color: @white;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 1200px !important;
 }
