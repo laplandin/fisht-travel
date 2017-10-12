@@ -1,0 +1,116 @@
+.about {
+  max-width: 1280px;
+  min-height: 750px;
+  margin: 0 auto 20px;
+
+  background-image:
+    linear-gradient(90deg, #4baef2 0%, #267bca 100%),
+    url(../img/about-2.jpg);
+  background-position:
+    left bottom,
+    left calc(100% + 40px);
+  background-size:
+    88.28125% 10px,
+    auto;
+  background-repeat: no-repeat;
+}
+
+.about__row {
+  display: flex;
+
+  &--top {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-image: url(../img/about-1.jpg);
+    background-position: right center;
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
+
+  &--bottom {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    padding: 40px 0 0;
+  }
+}
+
+.about__title {
+  max-width: 580px;
+  height: 96px;
+  padding: 33px 30px;
+  margin-left: auto;
+  margin-bottom: 30px;
+
+  text-transform: uppercase;
+  color: @white;
+}
+
+.about__text {
+  font: normal normal 300 18px/1.25 @fira-sans;
+  color: @black;
+  text-align: right;
+
+  &--border {
+    position: relative;
+
+    width: 720px;
+    padding: 40px 30px;
+    margin-right: auto;
+    border: 8px solid #fff324;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      left: -55px;
+      bottom: -55px;
+      z-index: 5;
+
+      display: block;
+      width: 197px;
+      height: 173px;
+
+      background-image: url("../img/icon-cloud-2.png");
+      background-position: center;
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      right: 0;
+      top: -85px;
+      z-index: 5;
+
+      display: block;
+      width: 200px;
+      height: 139px;
+
+      background-image: url("../img/icon-cloud-1.png");
+      background-position: center;
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.about__shaped {
+  max-width: 100%;
+
+  &::before {
+    content: "";
+
+    display: block;
+    float: left;
+    width: 100%;
+    height: 380px;
+
+    shape-outside: polygon(41% 0, 41% 24%, 75% 100%, 100% 100%, 0 100%, 0 0);
+  }
+}
