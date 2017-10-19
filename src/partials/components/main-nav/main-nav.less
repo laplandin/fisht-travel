@@ -4,6 +4,8 @@
   z-index: 10;
 
   width: 100%;
+
+  transition: all 0.2s linear;
 }
 
 .main-nav__container {
@@ -37,4 +39,42 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: @white;
+
+  transition: all 0.2s linear;
+
+  &:hover {
+    text-shadow: 1px 1px 2px #ffffff;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
 }
+
+.headroom {
+
+  &--pinned {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  &--unpinned {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  &--top {
+    background-color: fade(@primary, 50%);
+  }
+
+  &--not-top {
+    background-color: fade(@primary, 100%);
+  }
+}
+
+// headroom--top
+// headroom--not-top
+// headroom--bottom
+// headroom--not-bottom
+// headroom--pinned
+// headroom--unpinned
