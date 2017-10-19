@@ -28,10 +28,22 @@
 .footer-bottom__phone {
   width: 280px;
 
-  p {
+  a {
     margin: 0;
 
     font: normal normal 600 26px/1 @fira-sans;
     text-align: right;
+    color: @white;
+
+    transition: opacity 0.15s linear;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
   }
+
 }
