@@ -16,7 +16,7 @@
   flex-wrap: wrap;
 
   width: 1180px;
-  padding: 30px 20px;
+  padding: 15px 20px;
   margin: 0 auto;
 }
 
@@ -32,6 +32,14 @@
   margin: 0;
 
   list-style: none;
+}
+
+.main-nav__logo {
+  width: 120px;
+  height: auto;
+
+  transition: all 0.2s linear;
+  opacity: 1;
 }
 
 .main-nav__link {
@@ -64,17 +72,18 @@
   }
 
   &--top {
-    background-color: fade(@primary, 50%);
+    background-color: fade(@primary, 0%);
+
+    .main-nav__logo {
+      opacity: 0;
+    }
   }
 
   &--not-top {
-    background-color: fade(@primary, 100%);
+    background-color: fade(@primary, 95%);
+
+    .main-nav__logo {
+      opacity: 1;
+    }
   }
 }
-
-// headroom--top
-// headroom--not-top
-// headroom--bottom
-// headroom--not-bottom
-// headroom--pinned
-// headroom--unpinned
