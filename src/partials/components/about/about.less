@@ -5,23 +5,23 @@
   min-height: 750px;
   margin: 0 auto 50px;
 
-  &::before {
-    content: "";
-
-    position: absolute;
-    right: 35%;
-    bottom: 0;
-    z-index: -1;
-
-    display: block;
-    width: 1500px;
-    height: 744px;
-
-    background-image: url(../img/bg-mountain.png);
-    background-position: right bottom;
-    background-size: auto;
-    background-repeat: no-repeat;
-  }
+  // &::before {
+  //   content: "";
+  //
+  //   position: absolute;
+  //   right: 35%;
+  //   bottom: 0;
+  //   z-index: -1;
+  //
+  //   display: block;
+  //   width: 1500px;
+  //   height: 744px;
+  //
+  //   background-image: url(../img/bg-mountain.png);
+  //   background-position: right bottom;
+  //   background-size: auto;
+  //   background-repeat: no-repeat;
+  // }
 }
 
 .about__row {
@@ -87,7 +87,7 @@
 }
 
 .about__text {
-  font: normal normal 300 18px/1.25 @fira-sans;
+  font: normal normal 300 18px/1.25 @font-main;
   color: @black;
   text-align: right;
 
@@ -141,6 +141,20 @@
       background-repeat: no-repeat;
     }
   }
+}
+
+.about__image {
+  position: absolute;
+  right: 23%;
+  bottom: 0;
+  z-index: -1;
+
+  display: block;
+  width: 70vw;
+  min-width: 1500px;
+  height: auto;
+  max-height: 850px;
+
 }
 
 .about__shaped {

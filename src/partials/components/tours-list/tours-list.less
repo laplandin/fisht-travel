@@ -1,0 +1,131 @@
+.tours-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  min-width: 1280px;
+  margin: 0 auto;
+
+  font-size: 16px;
+}
+
+.tour-item {
+  position: relative;
+
+  width: 33.333333%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  background-color: @primary;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: all 0.2s linear;
+  }
+
+  &:hover img {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  figcaption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    padding: 35px 50px;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 35px;
+      left: 50px;
+      right: 50px;
+      bottom: 35px;
+
+      display: block;
+
+      background-image:
+        linear-gradient(0deg, yellow 0%, yellow 100%),
+        linear-gradient(0deg, yellow 0%, yellow 100%),
+        linear-gradient(0deg, yellow 0%, yellow 100%);
+      background-position:
+        left top,
+        right top,
+        right bottom,
+        left bottom;
+      background-size:
+        80px 5px,
+        5px 0,
+        0 5px;
+      background-repeat: no-repeat;
+
+      transition: background-size 0.3s ease-in-out;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 90px;
+      left: 50px;
+      right: 50px;
+      bottom: 35px;
+
+      display: block;
+
+      background-image: linear-gradient(0deg, yellow 0%, yellow 100%);
+      background-position: left bottom;
+      background-size: 5px 0;
+      background-repeat: no-repeat;
+
+      transition: background-size 0.3s ease-in-out;
+    }
+  }
+
+  &:hover figcaption::before {
+    background-size:
+      100% 5px,
+      5px 100%,
+      100% 5px;
+  }
+
+  &:hover figcaption::after {
+    background-size: 5px 100%;
+  }
+
+  &:hover .tour-item__title {
+    color: #292929;
+  }
+}
+
+.tour-item__title {
+  width: 75%;
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 60px;
+  font-weight: 600;
+  color: #ffffff;
+
+  transition: color 0.3s ease-in-out;
+}
+
+.tour-item__link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

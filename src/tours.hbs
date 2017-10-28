@@ -1,0 +1,25 @@
+{{#> layouts/base title="Index" }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  {{> components/main-nav/main-nav}}
+  <header class="header">
+
+  </header>
+  <main>
+    {{> components/tours-list/tours-list}}
+  </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    {{> components/footer-bottom/footer-bottom}}
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
+
+{{/layouts/base}}
