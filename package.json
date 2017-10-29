@@ -32,6 +32,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^1.9.1",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-svgstore": "^6.1.0",
     "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^2.0.2",
     "gulp-uglify": "^3.0.0",
