@@ -31,22 +31,6 @@
 
   transition: all 0.1s linear;
 
-  &--insta {
-    background-image: url("../img/icon-social-insta.png");
-  }
-
-  &--fb {
-    background-image: url("../img/icon-social-fb.png");
-  }
-
-  &--email {
-    background-image: url("../img/icon-social-email.png");
-  }
-
-  &--vk {
-    background-image: url("../img/icon-social-vk.png");
-  }
-
   &:hover {
     opacity: 0.6;
     box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
@@ -54,5 +38,13 @@
 
   &:active {
     opacity: 0.3;
+  }
+}
+
+.social__icon {
+  display: block;
+
+  svg {
+    fill: @white;
   }
 }
