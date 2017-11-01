@@ -16,7 +16,12 @@
   </main>
   {{/inline}}
   {{#* inline "footer-block"}}
-    {{> components/footer-main/footer-main}}
+    <footer class="footer-main">
+      <div class="container">
+        {{> components/form-feedback/form-feedback}}
+      </div>
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
   {{/inline}}
 
   {{#* inline "scripts-block"}}

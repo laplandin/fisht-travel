@@ -5,16 +5,17 @@
   {{/inline}}
 
   {{#*inline "content-block"}}
-  {{> components/main-nav/main-nav mod='inner'}}
   <header class="header">
-
+    {{> components/main-nav/main-nav mod='inner'}}
   </header>
   <main>
     {{> components/tours-list/tours-list}}
   </main>
   {{/inline}}
   {{#* inline "footer-block"}}
-    {{> components/footer-bottom/footer-bottom}}
+    <footer class="footer-main">
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
   {{/inline}}
 
   {{#* inline "scripts-block"}}
