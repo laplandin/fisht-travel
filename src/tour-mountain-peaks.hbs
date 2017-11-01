@@ -1,0 +1,27 @@
+{{#> layouts/base title="Index" }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  <header class="header">
+    {{> components/main-nav/main-nav mod="inner"}}
+    {{> components/tour-header/tour-header title="Тур по горным вершинам"}}
+  </header>
+  <main>
+    {{> components/tour-schedule/tour-schedule}}
+  </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
+
+{{/layouts/base}}

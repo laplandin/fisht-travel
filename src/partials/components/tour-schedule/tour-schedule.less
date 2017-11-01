@@ -1,0 +1,147 @@
+.tour-day {
+  padding: 30px 0 350px;
+
+  background-image: url("../img/bg-tour-day-footer.jpg");
+  background-size: auto;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+
+  .container {
+    padding-bottom: 30px;
+
+    background-image: linear-gradient(90deg, @primary 0%, @primary 100%);
+    background-size: 1px 100%;
+    background-position: right 19px center;
+    background-repeat: no-repeat;
+  }
+}
+
+.tour-day__title {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  padding-left: 110px;
+  margin-bottom: 30px;
+
+  font-size: 24px;
+  line-height: 1;
+
+  p {
+    padding-bottom: 15px;
+    margin: 0 0 11px;
+
+    font-weight: 300;
+    color: #414141;
+
+    background-image: linear-gradient(0deg, @primary 0%, @primary 100%);
+    background-size: 100% 4px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+
+  h3 {
+    flex: 1 0 100%;
+    margin: 0;
+
+    font-weight: 600;
+    color: #010101;
+  }
+}
+
+.tour-day__number {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-size: 132px;
+  line-height: 96px;
+  font-weight: 800;
+  color: #d0d3d4;
+}
+
+.tour-day__events {
+  padding: 0 0 0 110px;
+  margin: 0;
+
+  list-style: none;
+
+  li {
+    position: relative;
+
+    padding: 0 0 0 1em;
+
+    font-size: 24px;
+    line-height: 1.3em;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 0.65em;
+      left: 0.5em;
+
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+
+      background-color: @primary;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+
+}
+
+.tour-day__reference {
+
+  background-image: url("../img/bg-tour-1-day-1.jpg");
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+
+  .container {
+    position: relative;
+
+    padding: 20px 40px 20px 320px;
+
+    &::after {
+      content: "справка";
+
+      position: absolute;
+      top: 40px;
+      right: 0;
+
+      padding: 0 5px;
+
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 300;
+      color: @primary;
+
+      background-color: @white;
+
+      transform: rotate(-90deg) translateY(11px);
+    }
+  }
+
+  p {
+    margin: 0 0 1em 0;
+
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 400;
+    text-align: right;
+    color: #282828;
+  }
+
+  p:last-child {
+    margin: 0;
+  }
+}

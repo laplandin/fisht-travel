@@ -5,13 +5,9 @@
 
   width: 100%;
 
+  background-color: fade(@primary, 80%);
+
   transition: all 0.2s linear;
-
-  &--inner {
-    position: static;
-
-    background-color: @primary;
-  }
 }
 
 .main-nav__container {
@@ -95,7 +91,7 @@
   }
 
   &--top {
-    background-color: fade(@primary, 0%);
+    background-color: fade(@primary, 80%);
 
     .main-nav__logo {
       opacity: 0;
@@ -103,10 +99,14 @@
   }
 
   &--not-top {
-    background-color: fade(@primary, 95%);
+    background-color: fade(@primary, 80%);
 
     .main-nav__logo {
       opacity: 1;
     }
   }
+}
+
+.main-nav--inner .main-nav__logo {
+  opacity: 1;
 }
