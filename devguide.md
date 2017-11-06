@@ -36,7 +36,7 @@ We are going to use git branches for each personal task. For successful objectiv
 
     `git push origin <nameOfBranch>`
 
-4. Go to bitbucket and create new pull request. Setup me as reviewer (soooy@gmail.com) 
+4. Go to GitHub and create new pull request. Setup project-lead as reviewer
 5. Wait when I review your code.
 
 Last two steps for cases, when you not have permission for directly merge your code into repository.
