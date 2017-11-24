@@ -51,7 +51,7 @@ var PageTransitions = (function() {
 			return false;
 		}
 
-		// isAnimating = true;
+		isAnimating = true;
 
 		var $currPage = $pages.eq( current );
 
@@ -352,22 +352,17 @@ console.log($currPage, $nextPage);
 
 		}
 
-		$currPage.addClass( outClass ).on( animEndEventName, function() {
-			$currPage.off( animEndEventName );
-			endCurrPage = true;
-			if( endNextPage ) {
-				onEndAnimation( $currPage, $nextPage );
-			}
-		} );
-		$currPage.remove();
+    $currPage.addClass( outClass ).on( animEndEventName, function() {
+      $currPage.off( animEndEventName );
+      onEndAnimation( $currPage, $nextPage );
+      viewIn();
+    });
 
-		$nextPage.addClass( inClass ).on( animEndEventName, function() {
-			$nextPage.off( animEndEventName );
-			endNextPage = true;
-			if( endCurrPage ) {
-				onEndAnimation( $currPage, $nextPage );
-			}
-		} );
+    function viewIn (){
+      $nextPage.addClass( inClass ).on( animEndEventName, function() {
+        $nextPage.off( animEndEventName );
+      });
+    }
 
 		if( !support ) {
 			onEndAnimation( $currPage, $nextPage );
@@ -376,9 +371,7 @@ console.log($currPage, $nextPage);
 	}
 
 	function onEndAnimation( $outpage, $inpage ) {
-		endCurrPage = false;
-		endNextPage = false;
-		// resetPage( $outpage, $inpage );
+    $outpage.remove();
 		isAnimating = false;
 	}
 
