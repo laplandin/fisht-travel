@@ -7,8 +7,6 @@ var PageTransitions = (function() {
 		pagesCount,
 		current = 0,
 		isAnimating = false,
-		endCurrPage = false,
-		endNextPage = false,
 		animEndEventNames = {
 			'WebkitAnimation' : 'webkitAnimationEnd',
 			'OAnimation' : 'oAnimationEnd',
@@ -54,27 +52,6 @@ var PageTransitions = (function() {
 		isAnimating = true;
 
 		var $currPage = $pages.eq( current );
-
-		// if(options.showPage){
-		// 	if( options.showPage < pagesCount - 1 ) {
-		// 		current = options.showPage;
-		// 		console.log('a');
-		// 	}
-		// 	else {
-		// 		current = 0;
-        // console.log('b');
-		// 	}
-		// }
-		// else{
-		// 	if( current < pagesCount - 1 ) {
-		// 		++current;
-        // console.log('d');
-		// 	}
-		// 	else {
-		// 		current = 0;
-        // console.log('e');
-		// 	}
-		// }
 
 		var $nextPage = $pages.eq( ++current ).addClass( 'pt-page-current' ),
 			outClass = '', inClass = '';
@@ -354,7 +331,7 @@ console.log($currPage, $nextPage);
 
     $currPage.addClass( outClass ).on( animEndEventName, function() {
       $currPage.off( animEndEventName );
-      onEndAnimation( $currPage, $nextPage );
+      $currPage.remove();
       viewIn();
     });
 
@@ -371,7 +348,6 @@ console.log($currPage, $nextPage);
 	}
 
 	function onEndAnimation( $outpage, $inpage ) {
-    $outpage.remove();
 		isAnimating = false;
 	}
 
