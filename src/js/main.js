@@ -15,7 +15,7 @@ function loadPage (href) {
     success: function(response) {
       $("#pt-main").append('<div class="pt-page">'+ response +'</div>');
       PageTransitions.init();
-      PageTransitions.nextPage({animation: 3, showPage: 1})
+      PageTransitions.nextPage({animation: 9, showPage: 1})
     }
   })
 }

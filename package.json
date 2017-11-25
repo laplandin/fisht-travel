@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/laplandin/proto#readme",
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.18.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.4.2",
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-concat": "^2.6.1",

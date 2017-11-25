@@ -7,6 +7,8 @@ var PageTransitions = (function() {
 		pagesCount,
 		current = 0,
 		isAnimating = false,
+    endCurrPage = false,
+    endNextPage = false,
 		animEndEventNames = {
 			'WebkitAnimation' : 'webkitAnimationEnd',
 			'OAnimation' : 'oAnimationEnd',
@@ -331,15 +333,19 @@ console.log($currPage, $nextPage);
 
     $currPage.addClass( outClass ).on( animEndEventName, function() {
       $currPage.off( animEndEventName );
-      $currPage.remove();
-      viewIn();
-    });
+      endCurrPage = true;
+      if( endNextPage ) {
+        onEndAnimation( $currPage, $nextPage );
+      }
+    } );
 
-    function viewIn (){
-      $nextPage.addClass( inClass ).on( animEndEventName, function() {
-        $nextPage.off( animEndEventName );
-      });
-    }
+    $nextPage.addClass( inClass ).on( animEndEventName, function() {
+      $nextPage.off( animEndEventName );
+      endNextPage = true;
+      if( endCurrPage ) {
+        onEndAnimation( $currPage, $nextPage );
+      }
+    } );
 
 		if( !support ) {
 			onEndAnimation( $currPage, $nextPage );
@@ -348,12 +354,15 @@ console.log($currPage, $nextPage);
 	}
 
 	function onEndAnimation( $outpage, $inpage ) {
+	  $outpage.remove();
+    endCurrPage = false;
+    endNextPage = false;
 		isAnimating = false;
+		resetPage();
 	}
 
-	function resetPage( $outpage, $inpage ) {
-		$outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
-		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
+	function resetPage() {
+    $("html, body").animate({ scrollTop: 0 }, 200);
 	}
 
 	init();

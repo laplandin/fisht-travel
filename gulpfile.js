@@ -26,6 +26,8 @@ var wrap               = require('gulp-wrap');
 var handlebars         = require('gulp-handlebars');
 var declare            = require('gulp-declare');
 
+var babel              = require('babel');
+
 var path = {
     build: {
         //Адреса куда ложить файлы сборки
@@ -106,10 +108,13 @@ gulp.task('html:build', function() {
 
 gulp.task('js:build', function() {
     return gulp.src(path.src.js)
+      .pipe(babel({
+        presets: ['env']
+      }))
     // .pipe(uglify()) //Сжимаем js
-        .pipe(concat('main.js'))
-        .pipe(gulp.dest(path.build.js))
-        .pipe(reload({stream:true}));
+      .pipe(concat('main.js'))
+      .pipe(gulp.dest(path.build.js))
+      .pipe(reload({stream:true}));
 });
 
 gulp.task('css:build', function() {
