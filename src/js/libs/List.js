@@ -96,3 +96,5 @@ class List {
     return this.dataStorage[this.pos];
   }
 }
+
+module.exports = List;

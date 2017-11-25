@@ -1,4 +1,6 @@
-var PageTransitions = (function() {
+// const Modernizr = require("../../../plugins/modernizr/modernizr.custom.js");
+
+module.exports = (function() {
 
 	var $main = $( '#pt-main' ),
 		$pages,
