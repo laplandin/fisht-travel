@@ -66,7 +66,8 @@ var path = {
         html: 'src/**/*.html',
         hbs: 'src/**/*.hbs',
         js: 'src/**/*.js',
-        css: 'src/**/*.less',
+        less: 'src/**/*.less',
+        css: 'src/**/*.css',
         img: 'src/img/**/*.*',
         sprite: 'src/img/icon/*.svg',
         fonts: 'src/fonts/**/*.*',
@@ -295,7 +296,7 @@ gulp.task('watch', function() {
     watch(['./src/model/*.*'], function(event, cb) {
         gulp.start('html:build');
     });
-    watch([path.watch.css], function(event, cb) {
+    watch([path.watch.css, path.watch.less], function(event, cb) {
         gulp.start('css:build');
     });
     watch([path.watch.js], function(event, cb) {

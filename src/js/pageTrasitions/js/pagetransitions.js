@@ -1,11 +1,7 @@
-// const Modernizr = require("../../../plugins/modernizr/modernizr.custom.js");
-
 module.exports = (function() {
 
 	var $main = $( '#pt-main' ),
 		$pages,
-		$iterate = $( '#iterateEffects' ),
-		animcursor = 1,
 		pagesCount,
 		current = 0,
 		isAnimating = false,
@@ -23,7 +19,7 @@ module.exports = (function() {
 		support = Modernizr.cssanimations;
 
 	function init() {
-    $pages = $main.children( 'div.pt-page' );
+    $pages = $main.children( '.pt-page' );
     pagesCount = $pages.length;
 
 		$pages.each( function() {
@@ -32,18 +28,6 @@ module.exports = (function() {
 		} );
 
 		$pages.eq( current ).addClass( 'pt-page-current' );
-
-		$iterate.on( 'click', function() {
-			if( isAnimating ) {
-				return false;
-			}
-			if( animcursor > 67 ) {
-				animcursor = 1;
-			}
-			nextPage( animcursor );
-			++animcursor;
-		} );
-
 	}
 
 	function nextPage(options ) {
@@ -59,7 +43,7 @@ module.exports = (function() {
 
 		var $nextPage = $pages.eq( ++current ).addClass( 'pt-page-current' ),
 			outClass = '', inClass = '';
-console.log($currPage, $nextPage);
+
 		switch( animation ) {
 
 			case 1:
