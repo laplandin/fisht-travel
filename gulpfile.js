@@ -26,6 +26,11 @@ var wrap               = require('gulp-wrap');
 var handlebars         = require('gulp-handlebars');
 var declare            = require('gulp-declare');
 
+var browserify         = require('browserify');
+var babel              = require('gulp-babel');
+var babelify           = require('babelify');
+var source             = require('vinyl-source-stream');
+
 var path = {
     build: {
         //Адреса куда ложить файлы сборки
@@ -42,7 +47,7 @@ var path = {
     src: {
         //Откуда брать исходники
         html: 'src/*.html',
-        js: ['src/partials/components/**/*.js', 'src/js/**/*.js'],
+        js: ['src/partials/components/**/*.js'],
         css: ['src/style/main.less', 'src/font-awesome-4.7.0/css/font-awesome.min.css'],
         img: ['src/img/**/*.*', '!src/img/icon'],
         sprite: 'src/img/icon/*.svg',
@@ -53,14 +58,16 @@ var path = {
         precompile: "./src/precompiled/*.html",
         partials: "./src/partials",
         pages: "./src/*.hbs",
-        semantic: "./src/semantic/*.*"
+        semantic: "./src/semantic/*.*",
+        jsEntry: "./src/js/main.js"
     },
     watch: {
         //За изменениями каких файлов мы хотим наблюдать
         html: 'src/**/*.html',
         hbs: 'src/**/*.hbs',
         js: 'src/**/*.js',
-        css: 'src/**/*.less',
+        less: 'src/**/*.less',
+        css: 'src/**/*.css',
         img: 'src/img/**/*.*',
         sprite: 'src/img/icon/*.svg',
         fonts: 'src/fonts/**/*.*',
@@ -106,10 +113,24 @@ gulp.task('html:build', function() {
 
 gulp.task('js:build', function() {
     return gulp.src(path.src.js)
+      .pipe(babel({
+        presets: ['env', ['es2015']]
+      }))
     // .pipe(uglify()) //Сжимаем js
-        .pipe(concat('main.js'))
-        .pipe(gulp.dest(path.build.js))
-        .pipe(reload({stream:true}));
+      .pipe(concat('component.js'))
+      .pipe(gulp.dest(path.build.js))
+      .pipe(reload({stream:true}));
+});
+
+gulp.task("js:bundle", function() {
+  return browserify(path.src.jsEntry,{
+    debug: true,
+    extensions: ["es6"]
+  })
+    .transform(babelify, {presets: ["env", "es2015"]})
+    .bundle()
+    .pipe(source("app.js"))
+    .pipe(gulp.dest("build/js"));
 });
 
 gulp.task('css:build', function() {
@@ -257,6 +278,7 @@ gulp.task('build', sequence([
     [
         'html:build',
         'js:build',
+        'js:bundle',
         'css:build',
         'cssVendor',
         'fonts:build',
@@ -274,11 +296,11 @@ gulp.task('watch', function() {
     watch(['./src/model/*.*'], function(event, cb) {
         gulp.start('html:build');
     });
-    watch([path.watch.css], function(event, cb) {
+    watch([path.watch.css, path.watch.less], function(event, cb) {
         gulp.start('css:build');
     });
     watch([path.watch.js], function(event, cb) {
-        gulp.start('js:build');
+        gulp.start(['js:build', 'js:bundle']);
     });
     watch([path.watch.img], function(event, cb) {
         gulp.start('image:build');

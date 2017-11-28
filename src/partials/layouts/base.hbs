@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywwords" content=""/>
+    <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <link rel="shortcut icon" href="" type="image/png">
 
@@ -20,15 +20,11 @@
             crossorigin="anonymous"></script>
     <script src="vendor/semantic.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <title>
         {{#if title}}
             {{title}}
         {{else}}
-            mParty
+            Фишт-travel
         {{/if}}
     </title>
 
@@ -37,28 +33,30 @@
     {{/head-block}}
 </head>
 <body>
+  <div id="pt-main" class="pt-perspective">
+    <div class="pt-page-1 pt-page">
+      {{#> header}}
+      {{!-- Header - block --}}
+      {{/header}}
 
-{{#> header}}
-{{!-- Header - block --}}
-{{/header}}
-
-{{#> content-block}}
-{{!-- Content inserts --}}
-{{/content-block}}
+      {{#> content-block}}
+      {{!-- Content inserts --}}
+      {{/content-block}}
 
 
-{{#> footer-block}}
-{{!--
-  The `includes/footer` partial is the default content,
-  but can be overridden.
---}}
-{{/footer-block}}
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Plugins -->
-{{#> scripts-block}}
-{{!-- Custom scripts per page can be added. --}}
-{{/scripts-block}}
-<script src="js/main.js"></script>
+      {{#> footer-block}}
+      {{!--
+        The `includes/footer` partial is the default content,
+        but can be overridden.
+      --}}
+      {{/footer-block}}
+      {{#> scripts-block}}
+      {{!-- Custom scripts per page can be added. --}}
+      {{/scripts-block}}
+    </div>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Plugins -->
+  </div>
+  {{> layouts/common-scripts}}
 </body>
 </html>

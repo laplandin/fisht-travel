@@ -1,0 +1,28 @@
+{{#> layouts/template }}
+
+  {{#*inline "content-block"}}
+    {{> components/main-nav/main-nav}}
+    <header class="header">
+      {{> components/slider/slider}}
+    </header>
+    <main>
+      {{> components/about/about}}
+      {{> components/services/services}}
+    </main>
+  {{/inline}}
+
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      <div class="container">
+        {{> components/form-feedback/form-feedback}}
+      </div>
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+
+  {{#* inline "scripts-block"}}
+    <script src="plugins/shapes-polyfill/shapes-polyfill.min.js"></script>
+  {{/inline}}
+
+{{/layouts/template }}

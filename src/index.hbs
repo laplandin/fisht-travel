@@ -1,32 +1,28 @@
 {{#> layouts/base title="Index" }}
 
-  {{#* inline "nav"}}
-    {{> components/nav}}
-  {{/inline}}
+    {{#*inline "content-block"}}
+      {{> components/main-nav/main-nav}}
+      <header class="header">
+        {{> components/slider/slider}}
+      </header>
+      <main>
+        {{> components/about/about}}
+        {{> components/services/services}}
+      </main>
+    {{/inline}}
 
-  {{#*inline "content-block"}}
-  {{> components/main-nav/main-nav}}
-  <header class="header">
-    {{> components/slider/slider}}
+    {{#* inline "footer-block"}}
+      <footer class="footer-main">
+        <div class="container">
+          {{> components/form-feedback/form-feedback}}
+        </div>
+        {{> components/footer-bottom/footer-bottom}}
+      </footer>
+    {{/inline}}
 
-  </header>
-  <main>
-    {{> components/about/about}}
-    {{> components/services/services}}
-  </main>
-  {{/inline}}
-  {{#* inline "footer-block"}}
-    <footer class="footer-main">
-      <div class="container">
-        {{> components/form-feedback/form-feedback}}
-      </div>
-      {{> components/footer-bottom/footer-bottom}}
-    </footer>
-  {{/inline}}
 
   {{#* inline "scripts-block"}}
-    {{> layouts/index.scripts}}
-    <script>console.log("custom script")</script>
+      <script src="plugins/shapes-polyfill/shapes-polyfill.min.js"></script>
   {{/inline}}
 
 {{/layouts/base}}

@@ -1,0 +1,26 @@
+{{#> layouts/template }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+    <header class="header">
+      {{> components/main-nav/main-nav mod='inner'}}
+    </header>
+    <main>
+      {{> components/tours-list/tours-list}}
+    </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
+
+{{/layouts/template}}
