@@ -56,32 +56,38 @@ class List {
 
   append (element) {
     this.dataStorage[this.listSize++] = element;
+    return this;
   }
 
   prepend (element) {
     this.dataStorage.unshift(element);
     --this.listSize;
+    return this;
   }
 
   // TRAVERSING LIST
 
   front () {
     this.pos = 0;
+    return this;
   }
 
   end () {
     this.pos = this.listSize -1;
+    return this;
   }
 
   prev () {
     if (this.pos > 0) {
       --this.pos;
     }
+    return this;
   }
   next () {
     if (this.pos < this.listSize -1) {
       ++this.pos;
     }
+    return this;
   }
 
   get currentPos () {
@@ -90,9 +96,10 @@ class List {
 
   moveTo (position) {
     this.pos = position;
+    return this;
   }
 
-  getElement () {
+  get currentElement () {
     return this.dataStorage[this.pos];
   }
 }

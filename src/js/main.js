@@ -3,6 +3,7 @@ $(window).on('load', function() {
   const router = require("./router");
 
   router.init();
+  PageTransitions.init();
 
   function loadPage (href) {
     let url = `${href}.tmp.html`;

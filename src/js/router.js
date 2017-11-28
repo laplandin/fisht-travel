@@ -1,8 +1,14 @@
 const PageTransitions = require("./pageTrasitions/js/pagetransitions");
+const List = require("./libs/List");
 
 class Router {
 
+  constructor () {
+    this.urlList = new List();
+  }
+
   init () {
+    let self = this;
     if (!History.enabled) {
      $("a[router-link]").each((index, link) => {
        let fallbackHref = $(link).attr("href") + ".html";
@@ -11,14 +17,23 @@ class Router {
     }
     History.Adapter.bind(window, "statechange", function() {
       let state = History.getState();
-      console.log("state changed");
+      let requestedUrl = state.hash;
+      console.log(self.urlList, requestedUrl);
+      if (self.urlList.find(requestedUrl) === -1) {console.log("not found"); return;}
+      if (self.urlList.find(requestedUrl)  < self.urlList.pos) {
+        self.prevPage();
+      } else {
+        self.forwardPage();
+      }
+
     });
     this._setHandlers();
   }
 
   _setHandlers (historyUrl) {
     let self = this;
-    let url = historyUrl || window.location.href;
+    let url = historyUrl || window.location.pathname;
+    url = (/^\/$/.test(url)) ? url : `/${url}`;
     /**
      * @define History.pushState
      * @param data {Object}
@@ -26,6 +41,10 @@ class Router {
      * @param url "String"
      */
     History.pushState({}, null, url);
+    this.urlList.append(url)
+      .next();
+    console.log(this.urlList);
+
     $("a[router-link]").click(function(e) {
       e.preventDefault();
       let url = $(this).attr("href");
@@ -48,8 +67,8 @@ class Router {
       url: url,
       data: {},
       success: (response) => {
-        self._render(response);
         self._setHandlers(historyUrl);
+        self._render(response);
       }
     })
   }
@@ -60,9 +79,9 @@ class Router {
    * @private
    */
   _render (view) {
-    $("#pt-main").append(`<div class="pt-page">${view}</div>`);
-    PageTransitions.init();
-    PageTransitions.nextPage({animation: 9, showPage: 1})
+    $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos}">${view}</div>`);
+    PageTransitions.update();
+    PageTransitions.nextPage({animation: 9, showPage: this.urlList.pos})
   }
 
   showPreloader () {
@@ -70,7 +89,13 @@ class Router {
   }
 
   prevPage () {
-    
+    PageTransitions.update();
+    PageTransitions.nextPage({animation: 9, showPage: --this.urlList.pos});
+  }
+
+  forwardPage () {
+    PageTransitions.update();
+    PageTransitions.nextPage({animation: 9, showPage: ++this.urlList.pos});
   }
 }
 

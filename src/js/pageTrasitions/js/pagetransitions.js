@@ -1,6 +1,6 @@
 module.exports = (function() {
 
-	var $main = $( '#pt-main' ),
+	let $main = $( '#pt-main' ),
 		$pages,
 		pagesCount,
 		current = 0,
@@ -23,25 +23,35 @@ module.exports = (function() {
     pagesCount = $pages.length;
 
 		$pages.each( function() {
-			var $page = $( this );
+			let $page = $( this );
 			$page.data( 'originalClassList', $page.attr( 'class' ) );
 		} );
 
 		$pages.eq( current ).addClass( 'pt-page-current' );
 	}
 
-	function nextPage(options ) {
-		var animation = (options.animation) ? options.animation : options;
+	function update () {
+    $pages = $main.children( '.pt-page' );
+    pagesCount = $pages.length;
+    $pages.each( function() {
+      let $page = $( this );
+      $page.data( 'originalClassList', $page.attr( 'class' ) );
+    } );
+  }
 
+	function nextPage(options ) {
+    let animation = (options.animation) ? options.animation : options;
+    let targetPage = (options.showPage || options.showPage >= 0) ? options.showPage : console.log("invalid nextpage index");
+    console.log(targetPage);
 		if( isAnimating ) {
 			return false;
 		}
 
 		isAnimating = true;
 
-		var $currPage = $pages.eq( current );
+		let $currPage = $pages.eq( current );
 
-		var $nextPage = $pages.eq( ++current ).addClass( 'pt-page-current' ),
+		let $nextPage = $pages.eq( targetPage ).addClass( 'pt-page-current' ),
 			outClass = '', inClass = '';
 
 		switch( animation ) {
@@ -337,25 +347,29 @@ module.exports = (function() {
 			onEndAnimation( $currPage, $nextPage );
 		}
 
+		current = targetPage;
 	}
 
 	function onEndAnimation( $outpage, $inpage ) {
-	  $outpage.remove();
+	  // $outpage.hide();
     endCurrPage = false;
     endNextPage = false;
 		isAnimating = false;
-		resetPage();
+		resetPage( $outpage, $inpage);
 	}
 
-	function resetPage() {
+	function resetPage($outpage, $inpage) {
     $("html, body").animate({ scrollTop: 0 }, 200);
+    $outpage.attr( 'class', $outpage.data( 'originalClassList' ) ).removeClass(' pt-page-current');
+    $inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
 	}
 
 	init();
 
 	return {
-		init : init,
-		nextPage : nextPage,
+		init,
+		nextPage,
+    update
 	};
 
 })();
