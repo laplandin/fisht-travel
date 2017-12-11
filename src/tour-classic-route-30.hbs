@@ -1,0 +1,29 @@
+{{#> layouts/base title="Index" }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  <header class="header">
+    {{> components/main-nav/main-nav mod="inner"}}
+    {{> components/tour-header/tour-header title="Классический маршрут \u2030;30"}}
+  </header>
+  <main>
+    {{> components/tour-schedule/tour-schedule}}
+    {{> components/arrival-dates/arrival-dates}}
+
+  </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
+
+{{/layouts/base}}

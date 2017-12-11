@@ -87,13 +87,13 @@ var config = {
     logPrefix: "SoftMind"
 };
 
-gulp.task('ttf2woff', function(){
-    gulp.src(['./src/fonts/**/*.ttf'])
-        .pipe(ttf2woff())
-        .pipe(gulp.dest('./src/fonts'));
-    gulp.src(['./src/fonts/**/*.ttf'])
-        .pipe(ttf2woff2())
-        .pipe(gulp.dest('./src/fonts'));
+gulp.task('ttf2woff', function() {
+  gulp.src(['./src/fonts/**/*{.ttf,.otf}'])
+    .pipe(ttf2woff())
+    .pipe(gulp.dest('./src/fonts'));
+  gulp.src(['./src/fonts/**/*{.ttf,.otf}'])
+    .pipe(ttf2woff2())
+    .pipe(gulp.dest('./src/fonts'));
 });
 
 var example = require('./src/model/example.json');
