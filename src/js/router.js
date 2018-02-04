@@ -19,7 +19,7 @@ class Router {
       let state = History.getState();
       let requestedUrl = state.hash;
       console.log(self.urlList, requestedUrl);
-      if (self.urlList.find(requestedUrl) === -1) {console.log("not found"); return;}
+      if (self.urlList.find(requestedUrl) < 0) {console.log("not found"); return;}
       if (self.urlList.find(requestedUrl)  < self.urlList.pos) {
         self.prevPage();
       } else {
@@ -48,6 +48,8 @@ class Router {
     $("a[router-link]").click(function(e) {
       e.preventDefault();
       let url = $(this).attr("href");
+      console.log('PATH', window.location.href, url);
+      if (`/${url}` === `${window.location.pathname}.html` || url === window.location.pathname) {console.log('fired'); return;}
       self._loadPage(url);
     });
   }
@@ -90,12 +92,14 @@ class Router {
 
   prevPage () {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 9, showPage: --this.urlList.pos});
+    PageTransitions.nextPage({animation: 10, showPage: --this.urlList.pos});
+    this._setHandlers();
   }
 
   forwardPage () {
     PageTransitions.update();
     PageTransitions.nextPage({animation: 9, showPage: ++this.urlList.pos});
+    this._setHandlers();
   }
 }
 
