@@ -33,16 +33,18 @@ class Router {
   }
 
   _setHandlers () {
+    let links = $("a[router-link]");
     let self = this;
     let currentUrl = self.historyUrl || window.location.pathname;
     currentUrl = (/^\/$/.test(currentUrl)) ? currentUrl : `/${currentUrl}`;
 
+    links.removeClass('main-nav__link--active');
     let re = /\//gi;
     let matchedHref = currentUrl.replace(re, '').replace('.html', '');
     let selector = `.pt-page-current a[router-link][href='${matchedHref}']`;
     $(selector).addClass('main-nav__link--active');
 
-    $("a[router-link]").click(function(e) {
+    links.click(function(e) {
       e.preventDefault();
       let url = $(this).attr("href");
       if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
