@@ -17,11 +17,10 @@ class Router {
      })
     }
     History.Adapter.bind(window, "statechange", function() {
-      console.log('STATE_CHANGE');
       let state = History.getState();
       let requestedUrl = state.hash;
       if (self.urlList.find(requestedUrl) < 0) {
-        return; // branch for navigation via router-link atttribute
+        return; // branch for navigation via router-link attribute
       }
       if (self.urlList.find(requestedUrl)  < self.urlList.pos) { // handle back and forward navigation
         self.prevPage();
@@ -38,11 +37,15 @@ class Router {
     let currentUrl = self.historyUrl || window.location.pathname;
     currentUrl = (/^\/$/.test(currentUrl)) ? currentUrl : `/${currentUrl}`;
 
+    let re = /\//gi;
+    let matchedHref = currentUrl.replace(re, '').replace('.html', '');
+    let selector = `.pt-page-current a[router-link][href='${matchedHref}']`;
+    $(selector).addClass('main-nav__link--active');
+
     $("a[router-link]").click(function(e) {
       e.preventDefault();
       let url = $(this).attr("href");
-      console.log('PATH', currentUrl, url);
-      if (`/${url}` === currentUrl) {console.log('fired'); return;}
+      if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
       self._loadPage(url);
     });
   }
