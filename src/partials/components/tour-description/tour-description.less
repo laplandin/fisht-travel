@@ -1,0 +1,151 @@
+.tour-description {
+  margin-bottom: 80px;
+}
+
+.tour-description__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  padding: 45px 0;
+}
+
+.tour-description__title {
+  width: 49%;
+
+  text-align: right;
+
+  h2 {
+    position: relative;
+
+    display: inline-block;
+    padding-left: 15px;
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    vertical-align: bottom;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 3px;
+      right: 100%;
+
+      width: 50vw;
+      height: 7px;
+
+      background-color: @yellow;
+    }
+  }
+}
+
+.tour-description__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+  margin-bottom: 40px;
+}
+
+.tour-description__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  width: 49%;
+
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  text-align: justify;
+  color: @black;
+
+  p {
+    margin: 0 0 1em;
+  }
+
+  .tour-description__notice {
+    margin: auto 0 0;
+
+    font-weight: 700;
+    color: @gray;
+  }
+}
+
+.tour-description__features {
+  h2 {
+    margin: 0 0 20px;
+
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: @primary;
+  }
+
+  li {
+    font-size: 20px;
+    margin-bottom: 1em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      background-color: @primary;
+    }
+  }
+
+  p {
+    font-size: 24px;
+    list-style: 1.5;
+  }
+}
+
+.tour-description__image {
+  position: relative;
+
+  width: 49%;
+  min-height: 500px;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 70px;
+    left: 70px;
+    bottom: 70px;
+
+    display: block;
+    width: 50vw;
+    min-width: 700px;
+    border: 8px solid @yellow;
+  }
+}
+
+.tour-description__image-container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: auto;
+    height: auto;
+
+    transform: translate(-50%, -50%);
+  }
+}

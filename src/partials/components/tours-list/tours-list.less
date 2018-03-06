@@ -44,6 +44,13 @@
     bottom: 0;
     left: 0;
 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+
     padding: 35px;
 
     &::before {
@@ -78,13 +85,8 @@
     &::after {
       content: "";
 
-      position: absolute;
-      top: 90px;
-      left: 35px;
-      right: 35px;
-      bottom: 35px;
-
-      display: block;
+      width: 100%;
+      flex-grow: 1;
 
       background-image: linear-gradient(0deg, yellow 0%, yellow 100%);
       background-position: left bottom;
@@ -108,17 +110,22 @@
 
   &:hover .tour-item__title {
     color: #292929;
+    text-shadow: 0 0 5px @white;
   }
 }
 
 .tour-item__title {
+  flex-grow: 0;
+
   width: 95%;
   margin: 0;
+  padding: 10px 0;
 
   font-size: 24px;
-  line-height: 60px;
+  line-height: 1.2;
   font-weight: 700;
   color: #ffffff;
+  text-shadow: 0 0 5px @black;
 
   transition: color 0.3s ease-in-out;
 }

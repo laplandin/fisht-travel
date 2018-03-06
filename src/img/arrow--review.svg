@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="83"
+   viewBox="0 0 48 83"
+   version="1.1"
+   id="svg45"
+   sodipodi:docname="arrow--review.svg"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata49">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview47"
+     showgrid="false"
+     inkscape:zoom="2.8433735"
+     inkscape:cx="24"
+     inkscape:cy="41.5"
+     inkscape:window-x="552"
+     inkscape:window-y="270"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg45" />
+  <defs
+     id="defs41">
+    <style
+       id="style22">
+      .cls-1 {
+        fill: #626262;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter
+       id="filter"
+       x="1186"
+       y="3447"
+       width="48"
+       height="83"
+       filterUnits="userSpaceOnUse">
+      <feOffset
+         result="offset"
+         in="SourceAlpha"
+         id="feOffset24" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="1"
+         id="feGaussianBlur26" />
+      <feFlood
+         result="flood"
+         flood-opacity="0.25"
+         id="feFlood28" />
+      <feComposite
+         result="composite"
+         operator="in"
+         in2="blur"
+         id="feComposite30" />
+      <feBlend
+         result="blend"
+         in="SourceGraphic"
+         in2="composite"
+         id="feBlend32" />
+      <feFlood
+         result="flood-2"
+         flood-color="#43aefa"
+         id="feFlood34" />
+      <feComposite
+         result="composite-2"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite36" />
+      <feBlend
+         result="blend-2"
+         in2="blend"
+         id="feBlend38" />
+    </filter>
+  </defs>
+  <path
+     class="cls-1"
+     d="M1191.89,3448l-4.89,4.88,35.22,35.12L1187,3523.12l4.89,4.88,35.22-35.12L1232,3488Z"
+     transform="translate(-1186 -3447)"
+     id="path43" />
+</svg>

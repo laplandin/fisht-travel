@@ -1,0 +1,96 @@
+.tour-composition {
+  padding: 80px 0;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+}
+
+.tour-composition__column {
+  position: relative;
+
+  width: 42%;
+  padding: 145px 0 0;
+
+  h3 {
+    margin: 0 0 35px;
+
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  ul {
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  &::after, &::before {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+
+    display: block;
+  }
+
+  &--include {
+
+    h3 {
+      color: @primary;
+    }
+
+    li::before {
+      background-color: @primary;
+    }
+
+    &::before {
+      top: 0;
+      width: 52px;
+      height: 112px;
+      border-bottom: 12px solid @primary;
+      border-right: 12px solid @primary;
+
+      transform: translate(-50%, -23px) rotate(45deg);
+    }
+  }
+
+  &--not-include {
+
+    h3 {
+      color: @gray;
+    }
+
+    li::before {
+      background-color: @gray;
+    }
+
+    &::before, &::after {
+      top: 0;
+
+      width: 12px;
+      height: 112px;
+
+      background-color: @gray;
+    }
+
+    &::before {
+      transform: translate(-50%, -10px) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -10px) rotate(-45deg);
+    }
+  }
+}
+
+
+h3 {}
+
+ul {}
+
+li {}

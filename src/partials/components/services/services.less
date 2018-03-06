@@ -1,38 +1,29 @@
 .services {
   margin-bottom: 60px;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
 }
 
 .services__item {
+  width: 32.2%;
+  margin-bottom: 18px;
+
   background-color: #f1f1f1;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.4);
+
+  &--vide {
+    flex-grow: 1;
+  }
 
   img {
     width: 100%;
     height: auto;
-  }
-
-  &--1 {
-    float: left;
-    width: 660px;
-    min-height: 430px;
-    margin: 0 20px 20px 0;
-  }
-
-  &--2 {
-    float: right;
-    width: 480px;
-    min-height: 875px;
-
-    .services__description {
-      padding-left: 120px;
-      padding-right: 120px;
-    }
-  }
-
-  &--3 {
-    float: left;
-    width: 660px;
-    min-height: 425px;
   }
 }
 

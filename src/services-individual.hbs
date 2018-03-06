@@ -1,0 +1,45 @@
+{{#> layouts/base title="Создание индивидуальных туров и экскурсий" }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  <header class="header">
+    {{> components/main-nav/main-nav mod="inner"}}
+    {{> components/tour-header/tour-header
+      title="Создание индивидуальных туров и экскурсий"
+      bgImage="img/services/services-individual/hero.jpg"
+    }}
+  </header>
+  <main>
+    <div class="container">
+      <div class="service-info">
+        <div class="service-info__text">
+          <h2>Индивидуальные туры и экскурсии</h2>
+          <p>Насладиться живописной панорамой горных вершин и&nbsp;утопающих в&nbsp;роскошной зелени долин можно не&nbsp;только пешком, но&nbsp;и&nbsp;путешествуя на&nbsp;лошадях. Эти восхитительные создания, которые отличаются выносливостью и&nbsp;способностью легко переносить многодневные путешествия, порадуют туристов.</p>
+          <p>Насладиться живописной панорамой горных вершин и&nbsp;утопающих в&nbsp;роскошной зелени долин можно не&nbsp;только пешком, но&nbsp;и&nbsp;путешествуя на&nbsp;лошадях. Эти восхитительные создания, которые отличаются выносливостью и&nbsp;способностью легко переносить многодневные путешествия, порадуют туристов.</p>
+          <p>Насладиться живописной панорамой горных вершин и&nbsp;утопающих в&nbsp;роскошной зелени долин можно не&nbsp;только пешком, но&nbsp;и&nbsp;путешествуя на&nbsp;лошадях. Эти восхитительные создания, которые отличаются выносливостью и&nbsp;способностью легко переносить многодневные путешествия, порадуют туристов.</p>
+        </div>
+        <div class="service-info__image">
+          <img src="img/services/services-individual/content-photo.jpg" width="580" height="500" alt="">
+        </div>
+      </div>
+    </div>
+  </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      <div class="container">
+        {{> components/form-feedback/form-feedback}}
+      </div>
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
+
+{{/layouts/base}}

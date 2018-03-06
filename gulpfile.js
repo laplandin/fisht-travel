@@ -17,8 +17,6 @@ var  less              = require('gulp-less');
 var  concat            = require('gulp-concat');
 var  handlebarsCompile = require('gulp-compile-handlebars');
 var  rename            = require('gulp-rename');
-var  ttf2woff2         = require('gulp-ttf2woff2');
-var  ttf2woff          = require('gulp-ttf2woff');
 var  svgmin            = require('gulp-svgmin');
 var  svgstore          = require('gulp-svgstore');
 
@@ -39,7 +37,6 @@ var path = {
         css: 'build/css/',
         img: 'build/img/',
         fonts: 'build/fonts/',
-        cssVendor:'build/css/semantic/',
         plugins: 'build/plugins/',
         files: 'build/download/',
         vendor: 'build/vendor/'
@@ -52,13 +49,11 @@ var path = {
         img: ['src/img/**/*.*', '!src/img/icon'],
         sprite: 'src/img/icon/*.svg',
         fonts: 'src/fonts/**/*.*',
-        cssVendor: 'src/style/semantic/*.css',
         plugins: "src/plugins/**/*.*",
         files: "src/download/**/*.*",
         precompile: "./src/precompiled/*.html",
         partials: "./src/partials",
         pages: "./src/*.hbs",
-        semantic: "./src/semantic/*.*",
         jsEntry: "./src/js/main.js"
     },
     watch: {
@@ -86,15 +81,6 @@ var config = {
     port: 9000,
     logPrefix: "SoftMind"
 };
-
-gulp.task('ttf2woff', function() {
-  gulp.src(['./src/fonts/**/*{.ttf,.otf}'])
-    .pipe(ttf2woff())
-    .pipe(gulp.dest('./src/fonts'));
-  gulp.src(['./src/fonts/**/*{.ttf,.otf}'])
-    .pipe(ttf2woff2())
-    .pipe(gulp.dest('./src/fonts'));
-});
 
 var example = require('./src/model/example.json');
 
@@ -148,10 +134,6 @@ gulp.task('css:build', function() {
         .pipe(reload({stream:true}));
 });
 
-gulp.task('cssVendor', function() {
-    return gulp.src(path.src.cssVendor)
-        .pipe(gulp.dest(path.build.css));
-});
 
 // gulp.task('image:build', function () {
 //     return gulp.src(path.src.img) //Выберем наши картинки
@@ -246,12 +228,6 @@ gulp.task('plugins:copy', function() {
         .pipe(reload({stream: true}));
 });
 
-gulp.task('semantic:copy', function() {
-    return gulp.src(path.src.semantic)
-        .pipe(gulp.dest(path.build.vendor))
-        .pipe(reload({stream: true}));
-});
-
 gulp.task('files:copy', function() {
     return gulp.src(path.src.files)
         .pipe(gulp.dest(path.build.files))
@@ -280,13 +256,11 @@ gulp.task('build', sequence([
         'js:build',
         'js:bundle',
         'css:build',
-        'cssVendor',
         'fonts:build',
         'image:build',
         'sprite:build',
         'plugins:copy',
-        'precompile',
-        'semantic:copy'
+        'precompile'
     ]) );
 
 gulp.task('watch', function() {

@@ -1,0 +1,36 @@
+{{#> layouts/base title="Контакты" }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  <header class="header">
+    {{> components/main-nav/main-nav mod='inner'}}
+    <section class="tour-header" style="background-image: url(/img/bg-hero__contacts.jpg)">
+      <div class="container">
+        <h1 class="tour-header__title">Контакты</h1>
+        <p>Республика Адыгея, Майкопский район, пос. Каменномостский, ул. Мира, д. 65</p>
+        <p>Саркисян Виталий <a href="tel:+79184582207">+7 (918) 458-22-07</a></p>
+        <p>Хлебников Иван <a href="tel:+79185630657">+7 (918) 563-06-57</a></p>
+        <p>Email: <a href="mailto:01@fisht-travel.ru">01@fisht-travel.ru</a></p>
+        <p><a href="mailto:ivan.xlebnikov@mail.ru">ivan.xlebnikov@mail.ru</a>,  <a href="mailto:Sarkis84@ya.ru">Sarkis84@ya.ru</a></p>
+      </div>
+    </section>
+  </header>
+  <main>
+    {{> components/map/map}}
+  </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+  {{/inline}}
+
+{{/layouts/base}}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBcrw8HPYQ2-_JCBqWb1aH2DWn-QXtklI&callback=initMap"></script>
