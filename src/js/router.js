@@ -4,6 +4,7 @@ const List = require("./libs/List");
 class Router {
 
   constructor () {
+    this.historyUrl = '';
     this.urlList = new List();
   }
 
@@ -18,36 +19,35 @@ class Router {
     History.Adapter.bind(window, "statechange", function() {
       let state = History.getState();
       let requestedUrl = state.hash;
-      console.log(self.urlList, requestedUrl);
-      if (self.urlList.find(requestedUrl) === -1) {console.log("not found"); return;}
-      if (self.urlList.find(requestedUrl)  < self.urlList.pos) {
+      if (self.urlList.find(requestedUrl) < 0) {
+        return; // branch for navigation via router-link attribute
+      }
+      if (self.urlList.find(requestedUrl)  < self.urlList.pos) { // handle back and forward navigation
         self.prevPage();
       } else {
         self.forwardPage();
       }
-
     });
+    this._setHistory();
     this._setHandlers();
   }
 
-  _setHandlers (historyUrl) {
+  _setHandlers () {
+    let links = $("a[router-link]");
     let self = this;
-    let url = historyUrl || window.location.pathname;
-    url = (/^\/$/.test(url)) ? url : `/${url}`;
-    /**
-     * @define History.pushState
-     * @param data {Object}
-     * @param title "String"
-     * @param url "String"
-     */
-    History.pushState({}, null, url);
-    this.urlList.append(url)
-      .next();
-    console.log(this.urlList);
+    let currentUrl = self.historyUrl || window.location.pathname;
+    currentUrl = (/^\/$/.test(currentUrl)) ? currentUrl : `/${currentUrl}`;
 
-    $("a[router-link]").click(function(e) {
+    links.removeClass('main-nav__link--active');
+    let re = /\//gi;
+    let matchedHref = currentUrl.replace(re, '').replace('.html', '');
+    let selector = `.pt-page-current a[router-link][href='${matchedHref}']`;
+    $(selector).addClass('main-nav__link--active');
+
+    links.click(function(e) {
       e.preventDefault();
       let url = $(this).attr("href");
+      if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
       self._loadPage(url);
     });
   }
@@ -60,14 +60,12 @@ class Router {
   _loadPage (href) {
     let self = this;
     let url = `${href}.tmp.html`;
-    let historyUrl = `${href}.html`;
-    console.log(historyUrl);
+    self.historyUrl = `${href}.html`;
     $.ajax({
       type: "GET",
       url: url,
       data: {},
       success: (response) => {
-        self._setHandlers(historyUrl);
         self._render(response);
       }
     })
@@ -79,23 +77,46 @@ class Router {
    * @private
    */
   _render (view) {
+    this._setHistory();
     $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos}">${view}</div>`);
-    PageTransitions.update();
-    PageTransitions.nextPage({animation: 9, showPage: this.urlList.pos})
+    this.toPage ();
+  }
+
+  _setHistory () {
+    let self = this;
+    let currentUrl = self.historyUrl || window.location.pathname;
+    currentUrl = (/^\/$/.test(currentUrl)) ? currentUrl : `/${currentUrl}`;
+    /**
+     * @define History.pushState
+     * @param data {Object}
+     * @param title "String"
+     * @param url "String"
+     */
+    History.pushState({}, null, currentUrl);
+    this.urlList.append(currentUrl)
+      .next();
   }
 
   showPreloader () {
     console.log("preloader");
   }
 
+  toPage() {
+    PageTransitions.update();
+    PageTransitions.nextPage({animation: 9, showPage: this.urlList.pos})
+    this._setHandlers();
+  }
+
   prevPage () {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 9, showPage: --this.urlList.pos});
+    PageTransitions.nextPage({animation: 10, showPage: --this.urlList.pos});
+    this._setHandlers();
   }
 
   forwardPage () {
     PageTransitions.update();
     PageTransitions.nextPage({animation: 9, showPage: ++this.urlList.pos});
+    this._setHandlers();
   }
 }
 

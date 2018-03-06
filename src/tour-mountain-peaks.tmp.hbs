@@ -1,16 +1,18 @@
-{{#> layouts/template }}
+{{#> layouts/template title="Index" }}
 
   {{#* inline "nav"}}
     {{> components/nav}}
   {{/inline}}
 
   {{#*inline "content-block"}}
-    <header class="header">
-      {{> components/main-nav/main-nav mod='inner'}}
-    </header>
-    <main>
-      {{> components/tours-list/tours-list}}
-    </main>
+  <header class="header">
+    {{> components/main-nav/main-nav mod="inner"}}
+    {{> components/tour-header/tour-header title="Тур по горным вершинам"}}
+  </header>
+  <main>
+    {{> components/tour-schedule/tour-schedule}}
+    {{> components/arrival-dates/arrival-dates}}
+  </main>
   {{/inline}}
   {{#* inline "footer-block"}}
     <footer class="footer-main">
