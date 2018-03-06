@@ -1,0 +1,88 @@
+.reviews .container {
+  position: relative;
+}
+
+.reviews__title {
+  margin: 0 0 40px 0;
+
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: @primary;
+}
+
+.reviews__carousel {
+  padding: 0 100px;
+}
+
+.reviews__item.slick-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.reviews__image {
+  display: block;
+  width: 200px;
+  margin-bottom: 85px;
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+.reviews__text {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: @black;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.reviews__name {
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.5;
+  font-weight: 400;
+  color: @primary;
+  text-align: center;
+}
+
+.reviews__togglers {
+
+}
+
+.reviews__toggler {
+  position: absolute;
+  top: 50%;
+
+  width: 45px;
+  height: 80px;
+  border: none;
+
+  background-color: transparent;
+  background-image: url("../img/arrow--review.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+
+  &--next {
+    right: 0;
+
+    transform: translateY(-50%);
+  }
+
+  &--prev {
+    left: 0;
+
+    transform: translateY(-50%) rotate(180deg);
+
+  }
+}

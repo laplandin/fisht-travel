@@ -1,4 +1,4 @@
-{{#> layouts/base title="Index" }}
+{{#> layouts/base title="FISHT-TRAVEL - Активный отдых в адыгее и Краснодарском крае" }}
 
     {{#*inline "content-block"}}
       {{> components/main-nav/main-nav}}
@@ -8,6 +8,8 @@
       <main>
         {{> components/about/about}}
         {{> components/services/services}}
+        {{> components/reviews/reviews}}
+
       </main>
     {{/inline}}
 
@@ -23,6 +25,7 @@
 
   {{#* inline "scripts-block"}}
       <script src="plugins/shapes-polyfill/shapes-polyfill.min.js"></script>
+      <script src="plugins/slick/slick.min.js"></script>
   {{/inline}}
 
 {{/layouts/base}}

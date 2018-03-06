@@ -1,0 +1,48 @@
+.tour-metrics {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  width: auto;
+}
+
+.tour-metrics__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-right: 35px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.tour-metrics__icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 60px;
+  height: 60px;
+  margin-bottom: 5px;
+
+  svg {
+    width: 100%;
+    height: auto;
+
+    fill: @primary;
+  }
+}
+
+.tour-metrics__text {
+  font-size: 20px;
+  font-weight: 500;
+  //
+  // sub {
+  //   font-size: 1em;
+  // }
+}

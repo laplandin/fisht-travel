@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="0" height="0px" viewBox="0 0 0 0">
+  <linearGradient id="linear-gradient--20">
+      <stop offset="0%" stop-color="#43c3fb"/>
+      <stop offset="20%" stop-color="#43c3fb"/>
+      <stop offset="21%" stop-color="#d7d7d7"/>
+      <stop offset="100%" stop-color="#d7d7d7"/>
+  </linearGradient>
+  <linearGradient id="linear-gradient--40">
+      <stop offset="0%" stop-color="#43c3fb"/>
+      <stop offset="40%" stop-color="#43c3fb"/>
+      <stop offset="41%" stop-color="#d7d7d7"/>
+      <stop offset="100%" stop-color="#d7d7d7"/>
+  </linearGradient>
+  <linearGradient id="linear-gradient--60">
+      <stop offset="0%" stop-color="#43c3fb"/>
+      <stop offset="60%" stop-color="#43c3fb"/>
+      <stop offset="61%" stop-color="#d7d7d7"/>
+      <stop offset="100%" stop-color="#d7d7d7"/>
+  </linearGradient>
+  <linearGradient id="linear-gradient--80">
+      <stop offset="0%" stop-color="#43c3fb"/>
+      <stop offset="80%" stop-color="#43c3fb"/>
+      <stop offset="81%" stop-color="#d7d7d7"/>
+      <stop offset="100%" stop-color="#d7d7d7"/>
+  </linearGradient>
+</svg>

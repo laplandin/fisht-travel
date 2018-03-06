@@ -1,0 +1,33 @@
+{{#> layouts/base title="Наша команда" }}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  <header class="header">
+    {{> components/main-nav/main-nav mod="inner"}}
+    {{> components/tour-header/tour-header
+      title="Наша<br />команда"
+      bgImage="img/bg-hero__team.jpg"
+    }}
+  </header>
+  <main>
+    {{> components/team/team}}
+  </main>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      <div class="container">
+        {{> components/form-feedback/form-feedback}}
+      </div>
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+    <script>console.log("custom script")</script>
+  {{/inline}}
+
+{{/layouts/base}}
