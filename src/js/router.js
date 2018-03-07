@@ -6,6 +6,7 @@ class Router {
   constructor () {
     this.historyUrl = '';
     this.urlList = new List();
+    this.pending = false;
   }
 
   init () {
@@ -20,9 +21,11 @@ class Router {
       let state = History.getState();
       let requestedUrl = state.hash;
       if (self.urlList.find(requestedUrl) < 0) {
-        return; // branch for navigation via router-link attribute
+        if (self.pending) return; // branch for navigation via router-link attribute
+        window.location.reload();
       }
-      if (self.urlList.find(requestedUrl)  < self.urlList.pos) { // handle back and forward navigation
+      if (self.urlList.find(requestedUrl)  < self.urlList.pos && self.urlList.find(requestedUrl) >= 0) { // handle back and forward navigation
+        if (!self.urlList.length) document.location.reload();
         self.prevPage();
       } else {
         self.forwardPage();
@@ -46,6 +49,7 @@ class Router {
 
     links.click(function(e) {
       e.preventDefault();
+      self.pending = true;
       let url = $(this).attr("href");
       if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
       self._loadPage(url);
@@ -78,8 +82,12 @@ class Router {
    */
   _render (view) {
     this._setHistory();
-    $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos}">${view}</div>`);
+    const wrapper = $('#pt-main');
+    if (!wrapper.find(`.pt-page-${this.urlList.pos}`).length) {
+      $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos}">${view}</div>`);
+    }
     this.toPage ();
+    this.pending = false;
   }
 
   _setHistory () {
@@ -92,6 +100,7 @@ class Router {
      * @param title "String"
      * @param url "String"
      */
+    currentUrl.replace('//', '/');
     History.pushState({}, null, currentUrl);
     this.urlList.append(currentUrl)
       .next();
@@ -103,13 +112,14 @@ class Router {
 
   toPage() {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 9, showPage: this.urlList.pos})
+    PageTransitions.nextPage({animation: 9, showPage: this.urlList.pos});
     this._setHandlers();
   }
 
   prevPage () {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 10, showPage: --this.urlList.pos});
+    const page = --this.urlList.pos;
+    PageTransitions.nextPage({animation: 10, showPage: page});
     this._setHandlers();
   }
 
