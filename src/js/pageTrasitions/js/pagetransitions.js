@@ -13,6 +13,7 @@ module.exports = (function() {
 			'msAnimation' : 'MSAnimationEnd',
 			'animation' : 'animationend'
 		},
+    cache,
 		// animation end event name
 		animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
 		// support css animations
@@ -36,16 +37,20 @@ module.exports = (function() {
     $pages.each( function() {
       let $page = $( this );
       $page.data( 'originalClassList', $page.attr( 'class' ) );
-    } );
+    });
   }
 
 	function nextPage(options ) {
     let animation = (options.animation) ? options.animation : options;
     let targetPage = (options.showPage || options.showPage >= 0) ? options.showPage : console.log("invalid nextpage index");
-    console.log(targetPage);
 		if( isAnimating ) {
-			return false;
+
+			// return false;
 		}
+		cache = {
+		  $currPage: $pages.eq( current ),
+		  $nextPage: $pages.eq( targetPage )
+    };
 
 		isAnimating = true;
 
@@ -360,8 +365,18 @@ module.exports = (function() {
 
 	function resetPage($outpage, $inpage) {
     $("html, body").animate({ scrollTop: 0 }, 200);
-    $outpage.attr( 'class', $outpage.data( 'originalClassList' ) ).removeClass(' pt-page-current');
+    $outpage.attr( 'class', $outpage.data( 'originalClassList' ) ).removeClass('pt-page-current');
     $inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
+    $pages.each((index, page) => {
+      let classList = $(page).attr('class').match(/\bpt-page-\d|\bpt-page-current/g) || [];
+      $(page).removeClass();
+      $(page).addClass('pt-page ' + classList.join(' '));
+      if (index !== current) {
+        $(page).removeClass('pt-page-current');
+      } else {
+        $(page).addClass('pt-page-current');
+      }
+    })
 	}
 
 	init();
