@@ -86,6 +86,7 @@ class Router {
     if (!wrapper.find(`.pt-page-${this.urlList.pos}`).length) {
       $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos}">${view}</div>`);
     }
+    $('body').trigger('router-view-finish');
     this.toPage ();
     this.pending = false;
   }
