@@ -121,6 +121,7 @@
     position: relative;
 
     width: 50%;
+    height: 590px;
     padding: 20px 45px 20px 30px;
 
     background-image: url("../img/tour-interesting-bg.png");
@@ -128,17 +129,17 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    overflow: hidden;
+    overflow-y: scroll;
 
     &::before {
       content: "";
 
       position: absolute;
-      top: 445px;
+      bottom: 0;
       right: 22px;
 
-      width: 1px;
-      height: 200px;
+      width: 2px;
+      height: 130px;
 
       background-color: @white;
     }
@@ -160,7 +161,7 @@
     }
 
     p {
-      margin: 0 0 1em 0;
+      margin: 0 0 0.5em 0;
 
       font-size: 18px;
       line-height: 1.3;
