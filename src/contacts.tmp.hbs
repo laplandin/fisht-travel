@@ -9,12 +9,28 @@
     {{> components/main-nav/main-nav mod='inner'}}
     <section class="tour-header" style="background-image: url(/img/bg-hero__contacts.jpg)">
       <div class="container">
-        <h1 class="tour-header__title">Контакты</h1>
-        <p>Республика Адыгея, Майкопский район, пос. Каменномостский, ул. Мира, д. 65</p>
-        <p>Саркисян Виталий <a href="tel:+79184582207">+7 (918) 458-22-07</a></p>
-        <p>Хлебников Иван <a href="tel:+79185630657">+7 (918) 563-06-57</a></p>
-        <p>Email: <a href="mailto:01@fisht-travel.ru">01@fisht-travel.ru</a></p>
-        <p><a href="mailto:ivan.xlebnikov@mail.ru">ivan.xlebnikov@mail.ru</a>,  <a href="mailto:Sarkis84@ya.ru">Sarkis84@ya.ru</a></p>
+        <div class="tour-header__column">
+          <h1 class="tour-header__title">Контакты</h1>
+          <p>Республика Адыгея, Майкопский район, пос. Каменномостский, ул. Мира, д. 65</p>
+          <p>Саркисян Виталий <a href="tel:+79184582207">+7 (918) 458-22-07</a></p>
+          <p>Хлебников Иван <a href="tel:+79185630657">+7 (918) 563-06-57</a></p>
+          <p>Email: <a href="mailto:01@fisht-travel.ru">01@fisht-travel.ru</a></p>
+          <p><a href="mailto:ivan.xlebnikov@mail.ru">ivan.xlebnikov@mail.ru</a>,  <a href="mailto:Sarkis84@ya.ru">Sarkis84@ya.ru</a></p>
+        </div>
+        <div class="tour-header__column">
+          <form class="feedback__form feedback__form--header" action="#" method="post">
+            <h2 class="feedback__title section-title">Оставить заявку</h2>
+            <label class="feedback__input">
+              <span class="visuallyhidden">Введите ваше имя</span>
+              <input type="text" name="feedbackName" value="" placeholder="имя" required>
+            </label>
+            <label class="feedback__input">
+              <span class="visuallyhidden">Введите адрес электронной почты</span>
+              <input type="email" name="feedbackEmail" value="" placeholder="e-mail" required>
+            </label>
+            <button type="submit"  class="btn" name="feedbackSubmit">Отправить</button>
+          </form>
+        </div>
       </div>
     </section>
   </header>

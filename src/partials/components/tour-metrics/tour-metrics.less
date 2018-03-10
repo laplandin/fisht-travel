@@ -5,6 +5,35 @@
   align-items: flex-start;
 
   width: auto;
+
+  transition: all 0.3s ease-in-out;
+
+  &--list {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 0 40px 40px 40px;
+
+    justify-content: space-around;
+
+    background-image: linear-gradient(0deg, fade(@black, 80%), transparent);
+    background-position: center bottom;
+    background-size: cover;
+
+    .tour-metrics__icon {
+
+      svg {
+        fill: @yellow;
+      }
+    }
+
+    .tour-metrics__text {
+      font-weight: 600;
+      color: @white;
+    }
+  }
 }
 
 .tour-metrics__item {
