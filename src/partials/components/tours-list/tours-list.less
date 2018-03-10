@@ -36,9 +36,16 @@
     transition: all 0.2s linear;
   }
 
-  &:hover img {
-    transform: scale(1);
-    opacity: 0.6;
+  &:hover {
+    img {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+
+    .tour-metrics {
+      transform: translateY(50%);
+      opacity: 0;
+    }
   }
 
   figcaption {
