@@ -19,6 +19,7 @@ var  handlebarsCompile = require('gulp-compile-handlebars');
 var  rename            = require('gulp-rename');
 var  svgmin            = require('gulp-svgmin');
 var  svgstore          = require('gulp-svgstore');
+var  typograf          = require('gulp-typograf');
 
 var wrap               = require('gulp-wrap');
 var handlebars         = require('gulp-handlebars');
@@ -93,6 +94,7 @@ gulp.task('html:build', function() {
        .pipe(rename({
            extname: '.html'
        }))
+        .pipe(typograf({locale: ['ru', 'en-US']})) //типограф
         .pipe(gulp.dest(path.build.html)) //папка назначения
         .pipe(reload({stream:true}));
 });
