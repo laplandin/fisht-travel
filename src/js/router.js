@@ -47,12 +47,24 @@ class Router {
     let selector = `.pt-page-current a[router-link][href='${matchedHref}']`;
     $(selector).addClass('main-nav__link--active');
 
-    links.click(function(e) {
-      e.preventDefault();
-      self.pending = true;
-      let url = $(this).attr("href");
-      if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
-      self._loadPage(url);
+    links.mousedown(function(e){
+      switch(e.which)
+      {
+        case 1:
+          e.preventDefault();
+          self.pending = true;
+          let url = $(this).attr("href");
+          if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
+          self._loadPage(url);
+          break;
+        case 2:
+          e.preventDefault();
+          window.open(`${window.location.origin}/${$(this).attr('href')}.html`, '_blank');
+          break;
+        case 3:
+          break;
+      }
+      return true
     });
   }
 
