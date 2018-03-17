@@ -1,0 +1,13 @@
+<div class="reviews__item">
+  <div class="reviews__image">
+    <img src="img/users/user-{{this.avatar}}.jpg" alt="">
+  </div>
+  <div class="reviews__text">
+    {{#each this.text}}
+      <p>{{this}}</p>
+    {{/each}}
+  </div>
+  <div class="reviews__name">
+    <p>{{this.name}}</p>
+  </div>
+</div>

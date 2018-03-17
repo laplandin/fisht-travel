@@ -1,3 +1,29 @@
-{
-  "greet": "Hello"
-}
+[
+  {
+    "greet": "Hello 1"
+  },
+
+  {
+    "greet": "Hello 2"
+  },
+
+  {
+    "greet": "Hello 3"
+  },
+
+  {
+    "greet": "Hello 4"
+  },
+
+  {
+    "greet": "Hello 5"
+  },
+
+  {
+    "greet": "Hello 5"
+  },
+
+  {
+    "greet": "Hello 5"
+  }
+]

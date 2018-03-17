@@ -1,0 +1,16 @@
+<section class="arrival-dates">
+  <div class="container">
+    <h2>Заезды 2018</h2>
+    <table>
+      <tbody>
+        <tr>
+          {{#each arrival}}
+            <th>{{month}}</th>
+          {{/each}}
+        </tr>
+
+        {{{arrivalTable arrival}}}
+      </tbody>
+    </table>
+  </div>
+</section>

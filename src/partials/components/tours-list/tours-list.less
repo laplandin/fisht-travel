@@ -16,29 +16,26 @@
   position: relative;
 
   width: 33.333333%;
-  padding: 0 0 19.4% 0;
+  min-height: 200px;
+  padding: 0;
   margin: 0;
   overflow: hidden;
 
   background-color: @primary;
 
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
-
     display: block;
     width: 100%;
     height: auto;
 
     opacity: 0.9;
-    transform: scale(1.05);
+    transform: scale(1.1);
     transition: all 0.2s linear;
   }
 
   &:hover {
     img {
-      transform: scale(1);
+      transform: scale(1.05);
       opacity: 0.6;
     }
 

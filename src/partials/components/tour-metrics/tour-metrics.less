@@ -14,22 +14,35 @@
     left: 0;
     right: 0;
 
-    padding: 0 40px 40px 40px;
+    padding: 0 30px 40px 30px;
 
     justify-content: space-around;
 
-    background-image: linear-gradient(0deg, fade(@black, 80%), transparent);
+    background-image: linear-gradient(0deg, fade(@black, 80%), fade(@black, 30%) 80%, transparent);
     background-position: center bottom;
     background-size: cover;
 
+    .tour-metrics__item {
+      width: 12%;
+      margin: 0;
+    }
+
     .tour-metrics__icon {
+      width: 100%;
 
       svg {
         fill: @yellow;
       }
+
+      &--lvl {
+        use:first-child {
+          fill: @white;
+        }
+      }
     }
 
     .tour-metrics__text {
+      font-size: 12px;
       font-weight: 600;
       color: @white;
     }
@@ -64,6 +77,12 @@
     height: auto;
 
     fill: @primary;
+  }
+
+  &--lvl {
+    use:first-child {
+      fill: @gray--light;
+    }
   }
 }
 

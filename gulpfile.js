@@ -61,6 +61,7 @@ var path = {
         //За изменениями каких файлов мы хотим наблюдать
         html: 'src/**/*.html',
         hbs: 'src/**/*.hbs',
+        data: 'src/model/**/*.json',
         js: 'src/**/*.js',
         less: 'src/**/*.less',
         css: 'src/**/*.css',
@@ -83,13 +84,50 @@ var config = {
     logPrefix: "SoftMind"
 };
 
-var example = require('./src/model/example.json');
 
 gulp.task('html:build', function() {
+
+  var arrivalDates = require('./src/model/arrival-dates.json');
+  var metaInfo = require('./src/model/meta.json');
+  var reviewsData = require('./src/model/reviews.json');
+  var exampleData = require('./src/model/example.json');
+
    return gulp.src(path.src.pages) //выбор фалов по нужному пути
-        .pipe(handlebarsCompile({data: example}, {
+        .pipe(handlebarsCompile({
+          arrival: arrivalDates,
+          userreviews: reviewsData,
+          meta: metaInfo,
+          example: exampleData
+        }, {
             ignorePartials: true,
-            batch: [path.src.partials]
+            batch: [path.src.partials],
+            helpers: {
+              arrivalTable: function (arrival) {
+                var maxLength = 0;
+                var rows = [];
+                var tableArrival = "";
+                for (var i = 0; i < arrival.length; i++) {
+                  if (arrival[i].dates.length > maxLength) {
+                    maxLength = arrival[i].dates.length;
+                  }
+                }
+                for (var i = 0; i < maxLength; i++) {
+                  var row = "";
+                  for (var j = 0; j < arrival.length; j++) {
+                    if (arrival[j].dates[i] === undefined) {
+                      arrival[j].dates[i] = "";
+                    }
+                    row += "<td>" + arrival[j].dates[i] + "</td>";
+                  }
+                  rows.push(row);
+                }
+                for (var i = 0; i < rows.length; i++) {
+                  tableArrival += "<tr>" + rows[i] + "</tr>"
+                }
+
+                return tableArrival;
+              }
+            }
         }))
        .pipe(rename({
            extname: '.html'
@@ -136,19 +174,6 @@ gulp.task('css:build', function() {
         .pipe(reload({stream:true}));
 });
 
-
-// gulp.task('image:build', function () {
-//     return gulp.src(path.src.img) //Выберем наши картинки
-//     // .pipe(imagemin({ //Сожмем их
-//     // progressive: true
-//     // svgoPlugins: [{removeViewBox: false}],
-//     // use: [pngquant()],
-//     // interlaced: true
-//     // }))
-//         .pipe(gulp.dest(path.build.img)) //И бросим в build
-//         .pipe(reload({stream: true}));
-// });
-
 gulp.task("image:build", function() {
   return gulp.src(path.src.img)
     .pipe(imagemin([
@@ -172,21 +197,6 @@ gulp.task("image:build", function() {
 
 gulp.task('sprite:build', function() {
   return gulp.src(path.src.sprite)
-    // .pipe(imagemin([imagemin.svgo({
-    //   plugins: [{
-    //     cleanupAttrs: true,
-    //     removeDoctype: true,
-    //     removeXMLProcInst: true,
-    //     removeComments: true,
-    //     removeEditorsNSData: true,
-    //     removeEmptyAttrs: true,
-    //     removeUselessStrokeAndFill: true,
-    //     collapseGroups: true,
-    //     removeStyleElement: true,
-    //     cleanupIDs: true,
-    //     removeUnusedNS: true,
-    //     removeUselessDefs: true
-    // }]})]))
     .pipe(svgmin({
         plugins: [{
           cleanupAttrs: true,
@@ -210,14 +220,6 @@ gulp.task('sprite:build', function() {
     .pipe(gulp.dest(path.build.img))
     .pipe(reload({stream: true}));
 });
-
-// gulp.task('svg', function() {
-//    return gulp.src('src/img/svg/*.svg')
-//        .pipe(imagemin({
-//            svgoPlugins: [{removeViewBox: false}]
-//        }))
-//        .pipe(gulp.dest('src/img/'));
-// });
 
 gulp.task('fonts:build', function() {
     return gulp.src(path.src.fonts)
@@ -254,13 +256,13 @@ gulp.task('build', sequence([
         'clean'
     ],
     [
+        'sprite:build',
         'html:build',
         'js:build',
         'js:bundle',
         'css:build',
         'fonts:build',
         'image:build',
-        'sprite:build',
         'plugins:copy',
         'precompile'
     ]) );
