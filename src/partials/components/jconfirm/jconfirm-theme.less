@@ -1,0 +1,51 @@
+.jconfirm.jconfirm-fisht {
+  .jconfirm-bg {
+    background-color: fade(@primary, 20%);
+  }
+
+  .jconfirm-box {
+    padding: 20px 30px;
+    border-top-width: 8px;
+    border-radius: 0;
+
+    background-color: fade(@white, 80%);
+    box-shadow: 5px 9px 15px 0 rgba(0,0,0,.4);
+
+    &.loading {
+      &:before {
+      }
+      &:after {
+      }
+    }
+    div.jconfirm-closeIcon {
+    }
+    div.jconfirm-title-c {
+      margin-bottom: 20px;
+      text-align: center;
+
+    }
+    .jconfirm-title {
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    div.jconfirm-content-pane {
+      margin-bottom: 40px;
+    }
+    div.jconfirm-content {
+      font-size: 18px;
+      font-weight: 500;
+
+      &:empty {
+      }
+    }
+    .jconfirm-buttons {
+      button {
+      }
+      button + button {
+      }
+    }
+    &.hilight {
+    }
+  }
+}

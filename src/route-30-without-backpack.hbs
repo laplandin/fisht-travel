@@ -1,4 +1,8 @@
-{{#> layouts/base meta.30-without-backpack}}
+{{#> layouts/base}}
+
+  {{#*inline "head-block"}}
+    {{> layouts/head meta.30-without-backpack}}
+  {{/inline}}
 
   {{#* inline "nav"}}
     {{> components/nav}}

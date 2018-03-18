@@ -1,73 +1,107 @@
-var form = $('#feedback-form--tours');
-var submitBtn = $('#feedback-submit');
+(function () {
 
-submitBtn.on('click', function(e) {
-    e.preventDefault();
-    form.trigger('submit');
-    form[0].reset();
-});
+  var form = $('.feedback__form');
+  var arrivalDates = $('#arrival-date');
+  var nameInput = $('#feedback-name');
+  var phoneInput = $('#feedback-phone');
+  var emailInput = $('#feedback-email');
+  var commentInput = $('#feedback-comment');
 
-submitBtn.click(function (){
-    if($('#feedback-phone').val() === "" || ($('#feedback-name').val() === "")) {
-        $.confirm({
-          animation: 'scale',
-          closeAnimation: 'scale',
-          title: 'Внимание!',
-          content: 'Поля Имя и Номер телефона обязательны для заполнения',
-          type: 'orange',
-          buttons: {
-            cancel: {
-              text: 'Закрыть',
-              action() {}
-            }
-          }
-        });
-        return;
-    }
-    $.ajax({
-        type: 'post',
-        url:'post_callback.php',
-        data:{
-            date: $('#arrival-date').val(),
-            name: $('#feedback-name').val(),
-            phone: $('#feedback-phone').val(),
-            email: $('#feedback-email').val(),
-            comment: $('#feedback-comment').val(),
-        },
-        success : function(mes){
+    function formSubmit () {
+      // if (arrivalDates === undefind) {
+      //   arrivalDates.val() = "";
+      // } else {
+      //   arrivalDates.val();
+      // };
+      // if (phoneInput === undefind) {
+      //   phoneInput.val() = "";
+      // } else {
+      //   phoneInput.val();
+      // };
+      // if (commentInput === undefind) {
+      //   commentInput.val() = "";
+      // } else {
+      //   commentInput.val();
+      // };
+      var data = {
+        date: arrivalDates.val(),
+        username: nameInput.val(),
+        phone: phoneInput.val(),
+        email: emailInput.val(),
+        comment: commentInput.val()
+      }
+      var url = 'post_callback.php';
+
+      $.ajax({
+          type: 'post',
+          url: url,
+          data: data,
+          success : function(mes){
             $.confirm({
-              animation: 'scale',
-              closeAnimation: 'scale',
-              title: 'Успешно!',
-              content: 'Ваши данные получены. Наш менеджер вам перезвонит',
+              theme: 'fisht',
               type: 'green',
+              title: 'Отлично!',
+              content: 'Спасибо за заявку, наш менеджер скоро свяжется с вами',
+              animation: 'opacity',
+              animationSpeed: 500,
+              boxWidth: '600px',
+              useBootstrap: false,
+              escapeKey: true,
+              backgroundDismiss: true,
               buttons: {
-                cancel: {
-                  text: 'Закрыть',
-                  action() {}
-                }
-              }
-            });
-            $('#arrival-date').val(""),
-            $('#feedback-name').val(""),
-            $('#feedback-phone').val(""),
-            $('#feedback-email').val(""),
-            $('#feedback-comment').val("")
-        },
-        error: function(err) {
-          $.confirm({
-            animation: 'scale',
-            closeAnimation: 'scale',
-            title: 'Произошла ошибка',
-            type: 'red',
-            content: 'Произошла ошибка, попробуйте повторить запрос позднее',
-            buttons: {
-              cancel: {
-                text: 'Ok',
-                action() {}
-              }
+                ok: {
+                    text: 'OK', // text for button
+                    btnClass: 'btn-blue', // class for the button
+                    keys: ['enter'], // keyboard event for button
+                    isHidden: false, // initially not hidden
+                    isDisabled: false, // initially not disabled
+                    action: function(){}
+                },
             }
-          });
-        }
+            });
+            form[0].reset();
+          },
+          error: function(err) {
+            $.confirm({
+              theme: 'fisht',
+              type: 'red',
+              title: 'Ой, что-то пошло не так',
+              content: 'Попробуйте отправить заявку позже',
+              animation: 'opacity',
+              animationSpeed: 500,
+              boxWidth: '600px',
+              useBootstrap: false,
+              escapeKey: true,
+              backgroundDismiss: true,
+              buttons: {
+                ok: {
+                    text: 'OK', // text for button
+                    btnClass: 'btn', // class for the button
+                    keys: ['enter'], // keyboard event for button
+                    isHidden: false, // initially not hidden
+                    isDisabled: false, // initially not disabled
+                    action: function(heyThereButton){}
+                },
+            }
+            });
+          }
+      });
+    };
+
+    var submitBtn = $('#feedback-submit');
+
+    submitBtn.click(function(e) {
+      e.preventDefault();
     });
-});
+
+    submitBtn.click(formSubmit);
+
+    $('body').on('router-view-finish', function() {
+      var submitBtn = $('.pt-page-current #feedback-submit');
+      submitBtn.click(function(e) {
+        e.preventDefault();
+      });
+
+      submitBtn.click(formSubmit);
+    });
+}());

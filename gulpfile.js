@@ -95,7 +95,7 @@ gulp.task('html:build', function() {
    return gulp.src(path.src.pages) //выбор фалов по нужному пути
         .pipe(handlebarsCompile({
           arrival: arrivalDates,
-          userreviews: reviewsData,
+          reviews: reviewsData,
           meta: metaInfo,
           example: exampleData
         }, {

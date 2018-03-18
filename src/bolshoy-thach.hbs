@@ -1,4 +1,8 @@
-{{#> layouts/base meta.bolshoy-thach}}
+{{#> layouts/base}}
+
+  {{#*inline "head-block"}}
+    {{> layouts/head meta.bolshoy-thach}}
+  {{/inline}}
 
   {{#* inline "nav"}}
     {{> components/nav}}

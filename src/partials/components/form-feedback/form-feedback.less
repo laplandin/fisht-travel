@@ -14,12 +14,28 @@
     padding: 70px;
     background-color: rgba(255, 255, 255, 0.8);
   }
+
+  &--reservation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    padding: 70px;
+    background-color: rgba(255, 255, 255, 0.7);
+
+    label {
+      width: 48%;
+    }
+  }
 }
 
 .feedback__title {
   width: 100%;
   margin-bottom: 50px;
 
+  font-weight: 700;
   text-align: center;
   text-transform: uppercase;
   color: @primary;

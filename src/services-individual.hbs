@@ -1,4 +1,8 @@
-{{#> layouts/base meta.services-individual}}
+{{#> layouts/base}}
+
+  {{#*inline "head-block"}}
+    {{> layouts/head meta.services-individual}}
+  {{/inline}}
 
   {{#* inline "nav"}}
     {{> components/nav}}

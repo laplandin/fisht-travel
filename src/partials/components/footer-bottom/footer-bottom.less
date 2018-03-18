@@ -20,7 +20,9 @@
   p {
     margin: 0;
 
-    font: normal normal 400 12px/1 @font-main;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
     text-align: left;
   }
 }
@@ -32,7 +34,9 @@
     display: block;
     margin-left: auto;
 
-    font: normal normal 600 26px/1 @font-main;
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 600;
     text-align: right;
     color: @white;
     text-decoration: none;
@@ -40,12 +44,11 @@
     transition: opacity 0.15s linear;
 
     &:hover {
-      opacity: 0.6;
+      color: @yellow;
     }
 
     &:active {
-      opacity: 0.3;
+      opacity: 0.6;
     }
   }
-
 }

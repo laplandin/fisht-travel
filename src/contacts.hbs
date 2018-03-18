@@ -1,4 +1,8 @@
-{{#> layouts/base meta.contacts}}
+{{#> layouts/base}}
+
+  {{#*inline "head-block"}}
+    {{> layouts/head meta.contacts}}
+  {{/inline}}
 
   {{#* inline "nav"}}
     {{> components/nav}}

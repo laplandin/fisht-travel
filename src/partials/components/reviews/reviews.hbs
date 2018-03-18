@@ -2,11 +2,21 @@
   <div class="container">
     <h2 class="reviews__title">Отзывы</h2>
     <div class="reviews__carousel">
-      {{#each this}}
-        <p>
-          {{greet}}
-        </p>
+    {{#each reviews}}
+      <div class="reviews__item">
+        <div class="reviews__image">
+          <img src="img/users/user-{{avatar}}.jpg" alt="">
+        </div>
+      <div class="reviews__text">
+      {{#each text}}
+        <p>{{{this}}}</p>
       {{/each}}
+      </div>
+      <div class="reviews__name">
+        <p>{{name}}</p>
+      </div>
+    </div>
+    {{/each}}
     </div>
     <div class="reviews__togglers">
       <button type="button" class="reviews__toggler reviews__toggler--next">

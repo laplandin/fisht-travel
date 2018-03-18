@@ -24,6 +24,8 @@
   height: 45px;
   border-radius: 50%;
 
+  color: @white;
+
   background-color: transparent;
   background-position: center;
   background-size: cover;
@@ -32,12 +34,12 @@
   transition: all 0.1s linear;
 
   &:hover {
-    opacity: 0.6;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    color: @yellow;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 1);
   }
 
   &:active {
-    opacity: 0.3;
+    opacity: 0.6;
   }
 }
 
@@ -45,6 +47,6 @@
   display: block;
 
   svg {
-    fill: @white;
+    fill: currentColor;
   }
 }

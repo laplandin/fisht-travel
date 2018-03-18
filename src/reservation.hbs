@@ -1,0 +1,61 @@
+{{#> layouts/base}}
+
+  {{#*inline "head-block"}}
+    {{> layouts/head meta.reservation}}
+  {{/inline}}
+
+  {{#* inline "nav"}}
+    {{> components/nav}}
+  {{/inline}}
+
+  {{#*inline "content-block"}}
+  <header class="header">
+    {{> components/main-nav/main-nav mod='inner'}}
+    <section class="tour-header" style="background-image: url(/img/bg-hero__contacts.jpg)">
+      <div class="container">
+        <form class="feedback__form feedback__form--reservation" action="#" method="post">
+          <h2 class="feedback__title section-title">Оставить заявку</h2>
+          <label class="feedback__input">
+            <span class="feedback__label">Выберите тур</span>
+            <select name="tour" id="arrival-date">
+              <option value="30ка без рюкзака">30ка без рюкзака</option>
+              <option value="Через горы к морю Light">Через горы к морю Light</option>
+              <option value="Классический маршрут №30">Классический маршрут №30</option>
+              <option value="Большой Тхач">Большой Тхач</option>
+              <option value="Тур по горным вершинам">Тур по горным вершинам</option>
+              <option value="Долина водопадов">Долина водопадов</option>
+              <option value="Экскурсии по Адыгее">Экскурсии по Адыгее</option>
+              <option value="Мультиактивый тур">Мультиактивый тур</option>
+              <option value="Корпоративный тур">Корпоративный тур</option>
+            </select>
+          </label>
+          <label class="feedback__input">
+            <span class="visuallyhidden">Введите ваше имя</span>
+            <input type="text" name="feedbackName" value="" placeholder="имя" required>
+          </label>
+          <label class="feedback__input">
+            <span class="visuallyhidden">Введите дату заезда</span>
+            <input type="text" name="feedbackName" value="" placeholder="Дата заезда" required>
+          </label>
+          <label class="feedback__input">
+            <span class="visuallyhidden">Введите адрес электронной почты</span>
+            <input type="email" name="feedbackEmail" value="" placeholder="e-mail" required>
+          </label>
+          <button type="submit"  class="btn" name="feedbackSubmit">Отправить</button>
+        </form>
+      </div>
+    </section>
+  </header>
+  {{/inline}}
+  {{#* inline "footer-block"}}
+    <footer class="footer-main">
+      {{> components/footer-bottom/footer-bottom}}
+    </footer>
+  {{/inline}}
+
+  {{#* inline "scripts-block"}}
+    {{> layouts/index.scripts}}
+  {{/inline}}
+
+{{/layouts/base}}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBcrw8HPYQ2-_JCBqWb1aH2DWn-QXtklI&callback=initMap"></script>

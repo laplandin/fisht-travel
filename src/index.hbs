@@ -1,4 +1,8 @@
-{{#> layouts/base meta.index}}
+{{#> layouts/base}}
+
+    {{#*inline "head-block"}}
+      {{> layouts/head meta.index}}
+    {{/inline}}
 
     {{#*inline "content-block"}}
       {{> components/main-nav/main-nav}}
@@ -8,8 +12,7 @@
       <main>
         {{> components/about/about}}
         {{> components/services/services}}
-        {{> components/reviews/reviews example}}
-
+        {{> components/reviews/reviews}}
       </main>
     {{/inline}}
 

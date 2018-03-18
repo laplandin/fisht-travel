@@ -1,4 +1,8 @@
-{{#> layouts/base meta.tours}}
+{{#> layouts/base}}
+
+  {{#*inline "head-block"}}
+    {{> layouts/head meta.tours}}
+  {{/inline}}
 
   {{#* inline "nav"}}
     {{> components/nav}}
