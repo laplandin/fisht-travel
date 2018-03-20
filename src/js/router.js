@@ -89,7 +89,9 @@ class Router {
     this.links.off('mousedown', this._handler);
     const wrapper = $('#pt-main');
     if (!wrapper.find(`.pt-page-${this.urlList.pos}`).length) {
-      $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos} pt-page-temp">${view}</div>`);
+      let appended = $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos} pt-page-temp">${view}</div>`);
+      appended.find('.pt-page-temp')[0].style.willChange = 'transform, opacity';
+      debugger;
     }
     $('body').trigger('router-view-finish');
     this.toPage ();
