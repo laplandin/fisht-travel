@@ -7,6 +7,8 @@ class Router {
     this.historyUrl = '';
     this.urlList = new List();
     this.pending = false;
+    this.links = $("a[router-link]");
+    this.currentUrl = window.location.pathname;
   }
 
   init () {
@@ -24,48 +26,38 @@ class Router {
         if (self.pending) return; // branch for navigation via router-link attribute
         window.location.reload();
       }
-      if (self.urlList.find(requestedUrl)  < self.urlList.pos && self.urlList.find(requestedUrl) >= 0) { // handle back and forward navigation
+      if (self.urlList.find(requestedUrl) < self.urlList.pos && self.urlList.find(requestedUrl) >= 0) { // handle back and forward navigation
         if (!self.urlList.length) document.location.reload();
         self.prevPage();
       } else {
         self.forwardPage();
       }
+      console.log(self.urlList, self.urlList.pos);
     });
     this._setHistory();
     this._setHandlers();
   }
 
   _setHandlers () {
-    let links = $("a[router-link]");
     let self = this;
-    let currentUrl = self.historyUrl || window.location.pathname;
-    currentUrl = (/^\/$/.test(currentUrl)) ? currentUrl : `/${currentUrl}`;
+    let loadedView = $('.pt-page-temp');
+    if (loadedView.length) {
+      this.links =  loadedView.find('a[router-link]');
+      loadedView.removeClass('pt-page-temp');
+    }
 
-    links.removeClass('main-nav__link--active');
+    // let currentUrl = self.historyUrl || window.location.pathname;
+    console.log('url', this.currentUrl);
+    this.currentUrl = (/^\/$/.test(this.currentUrl)) ? this.currentUrl : `/${this.currentUrl}`;
+
+    this.links.removeClass('main-nav__link--active');
     let re = /\//gi;
-    let matchedHref = currentUrl.replace(re, '').replace('.html', '');
+    let matchedHref = this.currentUrl.replace(re, '').replace('.html', '');
     let selector = `.pt-page-current a[router-link][href='${matchedHref}']`;
     $(selector).addClass('main-nav__link--active');
 
-    links.mousedown(function(e){
-      switch(e.which)
-      {
-        case 1:
-          e.preventDefault();
-          self.pending = true;
-          let url = $(this).attr("href");
-          if (`${currentUrl}` === `/${url}.html`) return; // Handle click for same route
-          self._loadPage(url);
-          break;
-        case 2:
-          e.preventDefault();
-          window.open(`${window.location.origin}/${$(this).attr('href')}.html`, '_blank');
-          break;
-        case 3:
-          break;
-      }
-      return true
-    });
+    this.links.click(function(e) { e.preventDefault(); });
+    this.links.on('mousedown', this._handler.bind(self));
   }
 
   /**
@@ -94,9 +86,10 @@ class Router {
    */
   _render (view) {
     this._setHistory();
+    this.links.off('mousedown', this._handler);
     const wrapper = $('#pt-main');
     if (!wrapper.find(`.pt-page-${this.urlList.pos}`).length) {
-      $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos}">${view}</div>`);
+      $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos} pt-page-temp">${view}</div>`);
     }
     $('body').trigger('router-view-finish');
     this.toPage ();
@@ -125,21 +118,43 @@ class Router {
 
   toPage() {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 9, showPage: this.urlList.pos});
+    PageTransitions.nextPage({animation: 20, showPage: this.urlList.pos});
     this._setHandlers();
   }
 
   prevPage () {
     PageTransitions.update();
     const page = --this.urlList.pos;
-    PageTransitions.nextPage({animation: 10, showPage: page});
+    PageTransitions.nextPage({animation: 18, showPage: page});
     this._setHandlers();
   }
 
   forwardPage () {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 9, showPage: ++this.urlList.pos});
+    PageTransitions.nextPage({animation: 17, showPage: ++this.urlList.pos});
     this._setHandlers();
+  }
+
+  _handler(e) {
+    console.log('>>', this);
+    const self = this;
+    switch(e.which)
+    {
+      case 1:
+        e.preventDefault();
+        self.pending = true;
+        let url = $(e.target).attr("href");
+        if (`${self.currentUrl}` === `/${url}.html`) return; // Handle click for same route
+        self._loadPage(url);
+        break;
+      case 2:
+        e.preventDefault();
+        window.open(`${window.location.origin}/${$(this).attr('href')}.html`, '_blank');
+        break;
+      case 3:
+        break;
+    }
+    return true
   }
 }
 
