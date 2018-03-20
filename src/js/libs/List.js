@@ -32,6 +32,10 @@ class List {
     return false;
   }
 
+  removeTail () {
+    return this.dataStorage.splice(this.pos);
+  }
+
   get length () {
     return this.listSize;
   }

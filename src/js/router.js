@@ -108,6 +108,9 @@ class Router {
      */
     currentUrl.replace('//', '/');
     History.pushState({}, null, currentUrl);
+    if (this.urlList.pos < this.urlList.length) {
+      this.urlList.removeTail();
+    }
     this.urlList.append(currentUrl)
       .next();
   }
@@ -118,7 +121,7 @@ class Router {
 
   toPage() {
     PageTransitions.update();
-    PageTransitions.nextPage({animation: 20, showPage: this.urlList.pos});
+    PageTransitions.nextPage({animation: 19, showPage: this.urlList.pos});
     this._setHandlers();
   }
 
