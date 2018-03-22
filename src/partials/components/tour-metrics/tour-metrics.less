@@ -28,6 +28,7 @@
       margin: 0;
     }
 
+
     .tour-metrics__icon {
       width: 100%;
 
@@ -46,6 +47,29 @@
       font-size: 12px;
       font-weight: 600;
       color: @white;
+    }
+  }
+
+  &--center .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+
+    .tour-metrics__item {
+      margin-right: 60px;
+    }
+
+    .tour-metrics__icon {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+
+    .tour-metrics__text {
+      font-size: 26px;
+      font-weight: 500;
     }
   }
 }

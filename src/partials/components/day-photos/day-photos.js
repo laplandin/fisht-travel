@@ -6,7 +6,8 @@
       autoplaySpeed: 8000,
       arrows: false,
       dots: true,
-      pauseOnHover: true
+      pauseOnHover: true,
+      lazyLoad: 'progressive'
     });
   };
 
