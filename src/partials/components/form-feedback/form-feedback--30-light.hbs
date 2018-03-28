@@ -1,9 +1,9 @@
 <section class="feedback">
-  <form class="feedback__form" id="feedback-form--tours" enctype="multipart/form-data" action="" method="POST" onsubmit="return false">
+  <form class="feedback__form" enctype="multipart/form-data" action="" method="POST" onsubmit="return false">
     <h2 class="feedback__title section-title">Оставить заявку</h2>
     <label class="feedback__input">
       <span class="feedback__label">Выберите дату заезда</span>
-      <select name="arrivalDate" id="arrival-date">
+      <select name="arrivalDate" class="arrival-date">
         <option value="04.06-08.06">04.06-08.06</option>
         <option value="11.06-15.06">11.06-15.06</option>
         <option value="18.06-22.06">18.06-22.06</option>
@@ -26,20 +26,20 @@
     </label>
     <label class="feedback__input">
       <span class="visuallyhidden">Введите ваше имя</span>
-      <input type="text" id="feedback-name" name="feedbackName" value="" placeholder="имя" required>
+      <input type="text" class="feedback-name" name="feedbackName" value="" placeholder="имя" required>
     </label>
     <label class="feedback__input">
       <span class="visuallyhidden">Введите ваш телефон</span>
-      <input type="tel" id="feedback-phone" name="feedbackPhone" value="" placeholder="телефон" required>
+      <input type="tel" class="feedback-phone" name="feedbackPhone" value="" placeholder="телефон" required>
     </label>
     <label class="feedback__input">
       <span class="visuallyhidden">Введите адрес электронной почты</span>
-      <input type="email" id="feedback-email" name="feedbackEmail" value="" placeholder="e-mail">
+      <input type="email" class="feedback-email" name="feedbackEmail" value="" placeholder="e-mail">
     </label>
     <label class="feedback__input">
       <span class="visuallyhidden">Введите комментарий</span>
-      <textarea id="feedback-comment" name="feedbackComment" value="" rows="4" cols="80" placeholder="комментарий"></textarea>
+      <textarea class="feedback-comment" name="feedbackComment" value="" rows="4" cols="80" placeholder="комментарий"></textarea>
     </label>
-    <button type="submit" id="feedback-submit" class="btn" name="feedbackSubmit">Отправить</button>
+    <button type="submit" class="btn feedback-submit" name="feedbackSubmit">Отправить</button>
   </form>
 </section>

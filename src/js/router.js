@@ -32,7 +32,7 @@ class Router {
       } else {
         self.forwardPage();
       }
-      console.log(self.urlList, self.urlList.pos);
+      // console.log(self.urlList, self.urlList.pos);
     });
     this._setHistory();
     this._setHandlers();
@@ -47,7 +47,7 @@ class Router {
     }
 
     // let currentUrl = self.historyUrl || window.location.pathname;
-    console.log('url', this.currentUrl);
+    // console.log('url', this.currentUrl);
     this.currentUrl = (/^\/$/.test(this.currentUrl)) ? this.currentUrl : `/${this.currentUrl}`;
 
     this.links.removeClass('main-nav__link--active');
@@ -91,7 +91,7 @@ class Router {
     if (!wrapper.find(`.pt-page-${this.urlList.pos}`).length) {
       let appended = $("#pt-main").append(`<div class="pt-page pt-page-${this.urlList.pos} pt-page-temp">${view}</div>`);
       appended.find('.pt-page-temp')[0].style.willChange = 'transform, opacity';
-      debugger;
+      // debugger;
     }
     $('body').trigger('router-view-finish');
     this.toPage ();
@@ -118,7 +118,7 @@ class Router {
   }
 
   showPreloader () {
-    console.log("preloader");
+    // console.log("preloader");
   }
 
   toPage() {
@@ -141,7 +141,7 @@ class Router {
   }
 
   _handler(e) {
-    console.log('>>', this);
+    // console.log('>>', this);
     const self = this;
     switch(e.which)
     {

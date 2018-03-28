@@ -1,35 +1,37 @@
 (function () {
+    function formSubmit (fields) {
 
-  var form = $('.feedback__form');
-  var arrivalDates = $('#arrival-date');
-  var nameInput = $('#feedback-name');
-  var phoneInput = $('#feedback-phone');
-  var emailInput = $('#feedback-email');
-  var commentInput = $('#feedback-comment');
+      var dates = $('.pt-page .arrival-date');
+      var name = $('.pt-page .feedback-name');
+      var phone = $('.pt-page .feedback-phone');
+      var email = $('.pt-page .feedback-email');
+      var comment = $('.pt-page .feedback-comment');
 
-    function formSubmit () {
-      // if (arrivalDates === undefind) {
-      //   arrivalDates.val() = "";
-      // } else {
-      //   arrivalDates.val();
-      // };
-      // if (phoneInput === undefind) {
-      //   phoneInput.val() = "";
-      // } else {
-      //   phoneInput.val();
-      // };
-      // if (commentInput === undefind) {
-      //   commentInput.val() = "";
-      // } else {
-      //   commentInput.val();
-      // };
       var data = {
-        date: arrivalDates.val(),
-        username: nameInput.val(),
-        phone: phoneInput.val(),
-        email: emailInput.val(),
-        comment: commentInput.val()
-      }
+        dates: dates.val(),
+        username: name.val(),
+        phone: phone.val(),
+        email: email.val(),
+        comment: comment.val()
+      };
+
+      // if (fields.dates === undefined) {
+      //   console.log(fields.dates);
+      //   data.dates = '';
+      //   return;
+      // }
+
+      // if (fields.phone === undefined) {
+      //   fields.phone.val() = "";
+      //   return;
+      // }
+      //
+      // if (fields.comment === undefined) {
+      //   fields.comment.val() = "";
+      //   return;
+      // }
+
+
       var url = 'post_callback.php';
 
       $.ajax({
@@ -76,7 +78,7 @@
               buttons: {
                 ok: {
                     text: 'OK', // text for button
-                    btnClass: 'btn', // class for the button
+                    btnClass: 'btn feedback-submit', // class for the button
                     keys: ['enter'], // keyboard event for button
                     isHidden: false, // initially not hidden
                     isDisabled: false, // initially not disabled
@@ -88,20 +90,40 @@
       });
     };
 
-    var submitBtn = $('#feedback-submit');
+    $(document).ready(function(){
+      var submitBtn = $('.pt-page .feedback-submit');
+      var form = $('.pt-page .feedback__form');
+      var fields = {};
 
-    submitBtn.click(function(e) {
-      e.preventDefault();
-    });
+      submitBtn.off('click', formSubmit);
 
-    submitBtn.click(formSubmit);
-
-    $('body').on('router-view-finish', function() {
-      var submitBtn = $('.pt-page-current #feedback-submit');
       submitBtn.click(function(e) {
         e.preventDefault();
       });
 
-      submitBtn.click(formSubmit);
+      submitBtn.on('click', formSubmit);
+
+      // fields = {
+      //   dates: $('.pt-page .arrival-date'),
+      //   name: $('.pt-page .feedback-name'),
+      //   phone: $('.pt-page .feedback-phone'),
+      //   email: $('.pt-page .feedback-email'),
+      //   comment: $('.pt-page .feedback-comment')
+      // };
+
+      return fields;
+    });
+
+    $('body').on('router-view-finish', function() {
+      var submitBtn = $('.pt-page .feedback-submit');
+      console.log(submitBtn);
+
+      submitBtn.off('click', formSubmit);
+
+      submitBtn.click(function(e) {
+        e.preventDefault();
+      });
+
+      submitBtn.on('click', formSubmit);
     });
 }());
