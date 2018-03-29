@@ -1,13 +1,14 @@
 (function() {
   var dayPhotosSlick = function () {
-    $('.day-photos').slick({
+    $('.day-photos__list').slick({
       accessibility: false,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 8000,
       arrows: false,
       dots: true,
       pauseOnHover: true,
-      lazyLoad: 'progressive'
+      lazyLoad: 'progressive',
+      arrows: true
     });
   };
 
